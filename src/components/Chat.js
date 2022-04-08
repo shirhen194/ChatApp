@@ -9,7 +9,14 @@ import { BrowserRouter, Routes, Link, Route } from 'react-router-dom'
 
 function Chat() {
   return (
-    <div>here goes chat</div>
+    <div className='chat-wrapper'>
+      <div className='chat-flow'>
+        here goes chat
+      </div>
+      <div className='message-input'>
+        message input
+      </div>
+    </div>
   );
 }
 
