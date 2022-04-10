@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Link, Route } from 'react-router-dom'
 
 // import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 
-function SignOn() {
+function SignIn() {
   return (
       <Container>
       <Form>
@@ -28,7 +28,7 @@ function SignOn() {
           WELCOME
         </Button>
         </Link>
-        <Link to="/signIn">
+        <Link to="/signUp">
         <Button variant="secondary" type="button">
           SIGN UP
         </Button>
@@ -38,4 +38,4 @@ function SignOn() {
   );
 }
 
-export default SignOn;
+export default SignIn;
