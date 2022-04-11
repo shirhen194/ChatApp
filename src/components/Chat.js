@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Link, Route } from 'react-router-dom'
 
 // import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 
-function Chat() {
+function Chat(props) {
   return (
     <div className='chat-wrapper'>
       <div className='chat-flow'>
