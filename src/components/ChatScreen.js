@@ -11,7 +11,7 @@ import { BrowserRouter, Routes, Link, Route } from 'react-router-dom'
 
 // import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 
-function ChatScreen() {
+function ChatScreen(props) {
   return (
     // <Container fluid>
     //   <Row style={{
