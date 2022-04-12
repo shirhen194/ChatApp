@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter, Routes, Link, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 
@@ -28,9 +28,10 @@ function SignIn() {
           WELCOME
         </Button>
         </Link>
-        <Link to="/signUp">
-        <Button variant="secondary" type="button">
-          SIGN UP
+        Not a member?
+        <Link to="/">
+        <Button variant="link" type="button" >
+          Click Here
         </Button>
         </Link>
       </Form>
