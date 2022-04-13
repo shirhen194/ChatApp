@@ -13,7 +13,7 @@ function ChatScreen(props) {
     //   </Row>
     // </Container>
     <div className='web-chat'>
-      <div className='conversations'><Conversations /></div>
+      <div className='conversations'><Conversations {...props} /></div>
       <div className='chat'><Chat/></div>
     </div>
   );
