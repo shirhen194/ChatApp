@@ -11,11 +11,12 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      users: [{ userName: "Shir1", password: "a123", displayName: "Shir", contacts: ["Aviad", "Reut"] },
-      { userName: "Aviad1", password: "a123", displayName: "Aviad", contacts: ["Shir", "Reut"] },
-      { userName: "Reut1", password: "a123", displayName: "Reut", contacts: ["Shir", "Aviad"] }],
+      users: [{ userName: "Shir1", password: "a123", displayName: "Shir", pic: "cat_shir.jpg", contacts: ["Aviad", "Reut"] },
+      { userName: "Aviad1", password: "a123", displayName: "Aviad", pic: "cat_aviad.png", contacts: ["Shir", "Reut"] },
+      { userName: "Reut1", password: "a123", displayName: "Reut", pic: "cat_reut.jpg", contacts: ["Shir", "Aviad"] }],
       conversations: [{
         users: ["Shir", "Reut"],
+        id: "1",
         messeages: [
           {
             user: "Shir",
@@ -61,6 +62,7 @@ class App extends React.Component {
       },
       {
         users: ["Aviad", "Shir"],
+        id: "2",
         messeages: [
           {
             user: "Aviad",
@@ -94,78 +96,15 @@ class App extends React.Component {
           },
         ]
       }],
+      online: "Shir",
     }
   }
 
-  componentDidMount() {
-    let NewConversations = [...this.state.conversations]
-    NewConversations.push({
-      users: ["Shir", "Aviad"],
-      messeages: [
-        {
-          user: "Shir",
-          content: "Hi :)"
-        },
-        {
-          user: "Reut",
-          content: "Hi :)"
-        },
-        {
-          user: "Reut",
-          content: "What's up?"
-        },
-        {
-          user: "Shir",
-          content: "I'm good, doing Pesah homework"
-        },
-        {
-          user: "Shir",
-          content: "You?"
-        },
-        {
-          user: "Reut",
-          content: "I'm great, doing homework too"
-        },
-        {
-          user: "Shir",
-          content: "Good luckk I hope we'll both finish soon"
-        },
-        {
-          user: "Reut",
-          content: "Yeah me too!"
-        },
-      ]
-    },
-      {
-        users: [this.state.users[0], this.state.users[1]],
-        messeages: [
-          {
-            user: "Aviad",
-            content: "Hi Shir,how's it going?"
-          },
-          {
-            user: "Shir",
-            content: "I'm great, how are you?"
-          },
-          {
-            user: "Aviad",
-            content: "Awsome, can you help me with something in github?"
-          },
-          {
-            user: "Shir",
-            content: "Sure! what do you need?"
-          },
-          {
-            user: "Aviad",
-            content: "I'm trying to solve a conflict in merging to dev"
-          },
-          {
-            user: "Shir",
-            content: "Ok, I'll go check it now"
-          },
-        ]
-      })
-  }
+  // componentDidMount(){
+  //   this.setState({
+  //     online: this.state.users[0]
+  //   })
+  // }
 
   addUser = (user) => {
     let newUsers = [...this.state.users, user]
@@ -180,7 +119,12 @@ class App extends React.Component {
         <Routes>
           {/* Routes go here v */}
           <Route path="/" element={<Register addUser={this.addUser} />}></Route>
-          <Route path="/chat" element={<ChatScreen />}></Route>
+          <Route path="/chat" element={
+            <ChatScreen
+              users={this.state.users}
+              online={this.state.online}
+              conversations={this.state.conversations} />}>
+          </Route>
           <Route path="/signIn" element={<SignIn />}></Route>
         </Routes>
       </BrowserRouter>
