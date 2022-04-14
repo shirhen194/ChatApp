@@ -10,7 +10,9 @@ import {useRef, useState} from 'react'
 function Register(props) {
   const userName = useRef(null)
   const password = useRef(null)
+  const password_confirmation = useRef(null)
   const displayName = useRef(null)
+  const pic = useRef(null)
 
   const [ form, setForm ] = useState({})
   const [ errors, setErrors ] = useState({})
@@ -28,15 +30,19 @@ function Register(props) {
   }
 
   const findFormErrors = () => {
-    const { name, password, displayName } = form
+    const { name, password, displayName, pic } = form
     const newErrors = {}
     // userName errors
     if ( !name || name === '' ) newErrors.name = 'enter username!'
     // password errors
-    let pattern = /^[[a-zA-Z]+ [0-9]+]* | [[0-9]+ [a-zA-Z]+]* | [[0-9]+[a-zA-Z]+[0-9]+]*$/ ;
-    if ( pattern.test(password)) newErrors.password = 'enter password!'
+    if ( !(/[^0-9]+/.test(password) && /[^A-Za-z]+/.test(password))) newErrors.password = 'enter password!'
+    // password confirmation errors
+    if ( password !== password_confirmation) newErrors.password_confirmation = 'passwords do not match'
     // dispalyName errors
-    //if ( !displayName || displayName === '' ) 
+    if ( !displayName || displayName === '' ) setField('displayName', name)
+    //profile pic errors TODO
+    //if ( pic['type'].split('/')[0] !== 'image') newErrors.pic = 'enter profile pic'
+    
     return newErrors
   }
   
@@ -49,12 +55,12 @@ function Register(props) {
             userName:userName.current.value,
             password: password.current.value,
             displayName: displayName.current.value,
-            contacts:[]});
+            contacts:[],
+            pic: pic.current.value});
         window.location.href = '/chat'
     }
     return false;
   }
-
   return (
       <Container>
       <Form>
@@ -87,15 +93,44 @@ function Register(props) {
         </Form.Group>
 
         <Form.Group className="mb-3">
+          <Form.Label>Password confirmation</Form.Label>
+          <Form.Control 
+            type="password" 
+            ref={password_confirmation} 
+            placeholder="confirm password" 
+            onChange={ e => setField('password_confirmation', e.target.value) } 
+            isInvalid={ !!errors.password_confirmation }
+            />
+          <Form.Control.Feedback type='invalid'>
+            { errors.password_confirmation }
+          </Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group className="mb-3">
           <Form.Label>Display Name</Form.Label>
           <Form.Control 
-            type="name" ref={displayName} 
+            type="name" 
+            ref={displayName} 
             placeholder="Enter display name" 
             onChange={ e => setField('displayName', e.target.value) }
             isInvalid={ !!errors.displayName }
          />
           <Form.Control.Feedback type='invalid'>
             { errors.displayName }
+          </Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label >profile_pic</Form.Label>
+          <Form.Control 
+            type="file" 
+            ref={pic} 
+            placeholder="Enter profile picture" 
+            onChange={ e => setField('pic', e.target.value) }
+            isInvalid={ !!errors.pic }
+         />
+          <Form.Control.Feedback type='invalid'>
+            { errors.pic }
           </Form.Control.Feedback>
         </Form.Group>
 
