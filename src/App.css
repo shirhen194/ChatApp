@@ -40,6 +40,13 @@
   }
 }
 
+.register_signIn {
+  display: flex;
+    width: 60%;
+    justify-content:center;
+    margin:20 auto;
+  border-style: double;
+}
 
 .web-chat {
   width: 100vw;

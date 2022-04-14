@@ -62,7 +62,7 @@ function Register(props) {
     return false;
   }
   return (
-      <Container>
+      <Container className='register_signIn'>
       <Form>
         <Form.Group className="mb-3">
           <Form.Label>UserName</Form.Label>

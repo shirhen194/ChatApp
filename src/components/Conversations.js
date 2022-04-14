@@ -5,10 +5,19 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom'
+import Toast from 'react-bootstrap/Toast'
+import {useRef, useState} from 'react'
+import Form from 'react-bootstrap/Form';
 
 // import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 
 function Conversations(props) {
+
+  const [showA, setShowA] = useState(false);
+  const [showB, setShowB] = useState(false);
+
+  const toggleShowA = () => setShowA(!showA);
+  const toggleShowB = () => setShowB(!showB);
 
   
   return (
@@ -16,7 +25,30 @@ function Conversations(props) {
       <Row className='self'>
         <Col>my pic</Col>
         <Col xs={4}></Col>
-        <Col>new chat</Col>
+        <Col>
+        <Button onClick={toggleShowA} className="mb-2">
+          new chat
+        </Button>
+        <Toast show={showA} onClose={toggleShowA}>
+          <Toast.Header>
+            <img
+              src="holder.js/20x20?text=%20"
+              className="rounded me-3"
+              alt=""
+            />
+            <strong className="me-auto">Enter friend's username</strong>
+          </Toast.Header>
+          <Toast.Body>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>UserName</Form.Label>
+          <Form.Control type="username" placeholder="Enter username" />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+          </Toast.Body>
+        </Toast>
+        </Col>
         <Col>
           <Link to="/signIn">
             <Button variant="link" type="button" >
