@@ -3,11 +3,11 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter, Routes, Link, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 
-function SignOn() {
+function SignIn() {
   return (
       <Container>
       <Form>
@@ -28,9 +28,15 @@ function SignOn() {
           WELCOME
         </Button>
         </Link>
+        Not a member?
+        <Link to="/">
+        <Button variant="link" type="button" >
+          Click Here
+        </Button>
+        </Link>
       </Form>
       </Container>
   );
 }
 
-export default SignOn;
+export default SignIn;
