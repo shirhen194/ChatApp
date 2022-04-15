@@ -50,7 +50,7 @@ function Conversations(props) {
         </Toast>
         </Col>
         <Col>
-          <Link to="/signIn">
+          <Link to="/">
             <Button variant="link" type="button" >
               Sign Out
             </Button>

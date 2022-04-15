@@ -35,13 +35,15 @@ function Register(props) {
     // userName errors
     if ( !name || name === '' ) newErrors.name = 'enter username!'
     // password errors
-    if ( !(/[^0-9]+/.test(password) && /[^A-Za-z]+/.test(password))) newErrors.password = 'enter password!'
+    if ( !password && password === '') newErrors.password = 'enter password!'
+    else if ( !(/[^0-9]+/.test(password) && /[^A-Za-z]+/.test(password))) newErrors.password = 'password must include numbers and letters!'
     // password confirmation errors
-    if ( password !== password_confirmation) newErrors.password_confirmation = 'passwords do not match'
+    if ( password.value !== password_confirmation.value) newErrors.password_confirmation = 'passwords do not match'
     // dispalyName errors
     if ( !displayName || displayName === '' ) setField('displayName', name)
     //profile pic errors TODO
-    if ( !pic.match(/\.(jpg|jpeg|png|gif)$/)) newErrors.pic = 'enter profile pic'
+    if ( !pic ) setField('pic', "aviad_cat.png")
+    else if ( !pic.match(/\.(jpg|jpeg|png|gif)$/)) newErrors.pic = 'enter profile pic'
     
     return newErrors
   }
@@ -139,7 +141,7 @@ function Register(props) {
         </Button>
         
         Already a member?
-        <Link to="/signIn">
+        <Link to="/">
         <Button variant="link" type="button" >
           Click Here
         </Button>
