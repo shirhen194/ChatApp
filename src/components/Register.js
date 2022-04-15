@@ -41,7 +41,7 @@ function Register(props) {
     // dispalyName errors
     if ( !displayName || displayName === '' ) setField('displayName', name)
     //profile pic errors TODO
-    //if ( pic['type'].split('/')[0] !== 'image') newErrors.pic = 'enter profile pic'
+    if ( !pic.match(/\.(jpg|jpeg|png|gif)$/)) newErrors.pic = 'enter profile pic'
     
     return newErrors
   }
