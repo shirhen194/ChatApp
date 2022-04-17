@@ -112,6 +112,7 @@ class App extends React.Component {
     this.setState({
       users: newUsers
     })
+
   }
 
   render() {
@@ -126,7 +127,7 @@ class App extends React.Component {
               online={this.state.online}
               conversations={this.state.conversations} />}>
           </Route>
-          <Route path="/register" element={<Register addUser={this.addUser} />}></Route>
+          <Route path="/register" element={<Register addUser={this.addUser} users={this.state.users} />}></Route>
         </Routes>
       </BrowserRouter>
     );
