@@ -21,7 +21,6 @@ function Conversations(props) {
 
   const signOut = () => {
     props.setOnline(null)
-    window.location.href = '/'
   }
 
   
