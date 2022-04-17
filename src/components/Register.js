@@ -53,13 +53,18 @@ function Register(props) {
     if ( Object.keys(newErrors).length > 0 ) {
       setErrors(newErrors)
     } else {
-        props.users.push({                                    
+      let newUsers = [...props.users]
+      newUsers.push({                                    
             userName:userName.current.value,
             password: password.current.value,
             displayName: displayName.current.value,
             pic: pic.current.value,
             contacts:[]
           });
+
+          props.setUsers(newUsers)
+
+
           for(var i = 0; i < (props.users).length; i++) {
             console.log(props.users[i])
         }

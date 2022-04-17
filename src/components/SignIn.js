@@ -50,7 +50,8 @@ function SignIn(props) {
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors)
     } else {
-      props.setOnline(userName)
+      debugger;
+      props.setOnline(userName.current.value)
       window.location.href = '/chat'
     }
     return false;
