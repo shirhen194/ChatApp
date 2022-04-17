@@ -29,6 +29,24 @@ function SignIn(props) {
     })
   }
 
+  const renderSubmit = () => {
+    if (Object.keys(findMatch()).length > 0) {
+      return (
+        <Button variant="primary" type="button" onClick={() => handleSubmit(findMatch())}>
+          WELCOME
+        </Button>
+      )
+    } else {
+      return (
+        <Link to='/chat'>
+          <Button variant="primary" type="button" onClick={() => handleSubmit(findMatch())}>
+            WELCOME
+          </Button>
+        </Link>
+      )
+    }
+  }
+
   const findMatch = () => {
     const { name, password } = form
     const newErrors = {}
@@ -50,8 +68,7 @@ function SignIn(props) {
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors)
     } else {
-      props.setOnline(userName)
-      window.location.href = '/chat'
+      props.setOnline(userName.current.value)
     }
     return false;
   }
@@ -91,9 +108,7 @@ function SignIn(props) {
           <Form.Check type="checkbox" label="Remember me" />
         </Form.Group>
 
-        <Button variant="primary" type="button" onClick={() => handleSubmit(findMatch())}>
-          WELCOME
-        </Button>
+        {renderSubmit()}
 
         Not a member?
         <Link to="/register">

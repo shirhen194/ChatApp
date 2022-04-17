@@ -96,7 +96,7 @@ class App extends React.Component {
           },
         ]
       }],
-      online: "Shir1",
+      online: "",
     }
   }
 
@@ -115,6 +115,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state.online)
     return (
       <BrowserRouter>
         <Routes>
@@ -124,7 +125,9 @@ class App extends React.Component {
             <ChatScreen
               users={this.state.users}
               online={this.state.online}
-              conversations={this.state.conversations} />}>
+              conversations={this.state.conversations} 
+              setOnline={this.setOnline}
+              />}>
           </Route>
           <Route path="/register" element={<Register addUser={this.addUser} users={this.state.users} />}></Route>
         </Routes>
