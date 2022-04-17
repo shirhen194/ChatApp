@@ -53,13 +53,17 @@ function Register(props) {
     if ( Object.keys(newErrors).length > 0 ) {
       setErrors(newErrors)
     } else {
-        props.addUser({
+        props.users.push({                                    
             userName:userName.current.value,
             password: password.current.value,
             displayName: displayName.current.value,
-            contacts:[],
-            pic: pic.current.value});
-        window.location.href = '/chat'
+            pic: pic.current.value,
+            contacts:[]
+          });
+          for(var i = 0; i < (props.users).length; i++) {
+            console.log(props.users[i])
+        }
+        window.location.href = '/chat' 
     }
     return false;
   }

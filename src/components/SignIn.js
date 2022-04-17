@@ -9,7 +9,7 @@ import { propTypes } from 'react-bootstrap/esm/Image';
 
 // import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 
-function SignIn() {
+function SignIn(props) {
   
   const userName = useRef(null)
   const password = useRef(null)
@@ -32,23 +32,26 @@ function SignIn() {
   const findMatch = () => {
     const { name, password } = form
     const newErrors = {}
-    for (const user of this.props.users) {
-      console.log(user)
-      if (user.userName === name && user.password === password) return user
-    }
+    for(var i = 0; i < (props.users).length; i++) {
+      if(props.users[i].userName === name && props.users[i].password === password)  return newErrors
+  }
     
-    newErrors.notUser = 'no account with these credentials!'
+    newErrors.password = 'no account with these credentials!'
   
     return newErrors
   }
   
   const handleSubmit = e => {
+    for(var i = 0; i < (props.users).length; i++) {
+      console.log(props.users[i])
+  }
     const newErrors = findMatch()
-    if ( Object.keys(newErrors).length === 0 ) {
-      
-      window.location.href = '/chat'
+    console.log( Object.keys(newErrors))
+    if ( Object.keys(newErrors).length > 0 ) {
+      setErrors(newErrors)
     } else {
-      setErrors(newErrors)  
+      window.location.href = '/chat'
+        
     }
     return false;
   }
@@ -87,11 +90,11 @@ function SignIn() {
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Remember me" />
         </Form.Group>
-        <Link to="/chat">
+        
         <Button variant="primary" type="button" onClick={()=>handleSubmit(findMatch())}>
           WELCOME
         </Button>
-        </Link>
+      
         Not a member?
         <Link to="/register">
         <Button variant="link" type="button" >
