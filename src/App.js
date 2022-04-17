@@ -101,9 +101,8 @@ class App extends React.Component {
   }
 
   setOnline = (user) => {
-    console.log(user)
     this.setState({
-      online: "Shir1"
+      online: user
     })
   }
 
