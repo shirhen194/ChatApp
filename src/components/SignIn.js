@@ -9,7 +9,7 @@ import { propTypes } from 'react-bootstrap/esm/Image';
 
 // import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 
-function SignIn() {
+function SignIn(props) {
   
   const userName = useRef(null)
   const password = useRef(null)
@@ -45,7 +45,7 @@ function SignIn() {
   const handleSubmit = e => {
     const newErrors = findMatch()
     if ( Object.keys(newErrors).length === 0 ) {
-      
+      props.setOnline(userName)
       window.location.href = '/chat'
     } else {
       setErrors(newErrors)  

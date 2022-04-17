@@ -15,7 +15,7 @@ class App extends React.Component {
       { userName: "Aviad1", password: "a123", displayName: "Aviad", pic: "cat_aviad.png", contacts: ["Shir", "Reut"] },
       { userName: "Reut1", password: "a123", displayName: "Reut", pic: "cat_reut.jpg", contacts: ["Shir", "Aviad"] }],
       conversations: [{
-        users: ["Shir", "Reut"],
+        users: ["Shir1", "Reut1"],
         id: "1",
         messeages: [
           {
@@ -61,7 +61,7 @@ class App extends React.Component {
         ]
       },
       {
-        users: ["Aviad", "Shir"],
+        users: ["Aviad1", "Shir1"],
         id: "2",
         messeages: [
           {
@@ -96,15 +96,16 @@ class App extends React.Component {
           },
         ]
       }],
-      online: "Shir",
+      online: "",
     }
   }
 
-  // componentDidMount(){
-  //   this.setState({
-  //     online: this.state.users[0]
-  //   })
-  // }
+  setOnline = (user) => {
+    console.log(user)
+    this.setState({
+      online: "Shir1"
+    })
+  }
 
   addUser = (user) => {
     let newUsers = [...this.state.users, user]
@@ -118,7 +119,7 @@ class App extends React.Component {
       <BrowserRouter>
         <Routes>
           {/* Routes go here v */}
-          <Route path="/" element={<SignIn users={this.state.users} />}></Route>
+          <Route path="/" element={<SignIn users={this.state.users} setOnline={this.setOnline} />}></Route>
           <Route path="/chat" element={
             <ChatScreen
               users={this.state.users}

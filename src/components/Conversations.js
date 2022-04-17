@@ -19,6 +19,11 @@ function Conversations(props) {
   const toggleShowA = () => setShowA(!showA);
   const toggleShowB = () => setShowB(!showB);
 
+  const signOut = () => {
+    props.setOnline(null)
+    window.location.href = '/'
+  }
+
   
   return (
     <Container>
@@ -51,7 +56,7 @@ function Conversations(props) {
         </Col>
         <Col>
           <Link to="/">
-            <Button variant="link" type="button" >
+            <Button variant="link" type="button" onClick={signOut}>
               Sign Out
             </Button>
           </Link>
@@ -69,7 +74,7 @@ function Conversations(props) {
       return (c.users.includes(props.online));
     }).map(cf => {
       let otherUserName = cf.users[0] !== props.online ? cf.users[0] : cf.users[1];
-      let otherUser = props.users.find(u => u.displayName === otherUserName);
+      let otherUser = props.users.find(u => u.userName === otherUserName);
       // console.log()
       return (
         <div key={otherUser.displayName} className="convo">
