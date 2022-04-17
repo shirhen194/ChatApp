@@ -101,8 +101,9 @@ class App extends React.Component {
   }
 
   setOnline = (user) => {
+    let userObj = this.state.users.find(u => u.userName === user)
     this.setState({
-      online: user
+      online: userObj
     })
   }
 
@@ -115,7 +116,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.online)
     return (
       <BrowserRouter>
         <Routes>

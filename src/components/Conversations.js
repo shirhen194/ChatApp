@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom'
 import Toast from 'react-bootstrap/Toast'
-import {useRef, useState} from 'react'
+import { useRef, useState } from 'react'
 import Form from 'react-bootstrap/Form';
 
 // import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
@@ -23,35 +23,39 @@ function Conversations(props) {
     props.setOnline(null)
   }
 
-  
+
   return (
     <Container>
       <Row className='self'>
-        <Col>my pic</Col>
+        <Col> <img
+          className="convos-pic"
+          src={props.online.pic}
+          alt="profile_pic"
+        /></Col>
         <Col xs={4}></Col>
         <Col>
-        <Button onClick={toggleShowA} className="mb-2">
-          new chat
-        </Button>
-        <Toast show={showA} onClose={toggleShowA}>
-          <Toast.Header>
-            <img
-              src="holder.js/20x20?text=%20"
-              className="rounded me-3"
-              alt=""
-            />
-            <strong className="me-auto">Enter friend's username</strong>
-          </Toast.Header>
-          <Toast.Body>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>UserName</Form.Label>
-          <Form.Control type="username" placeholder="Enter username" />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-          </Toast.Body>
-        </Toast>
+          <Button onClick={toggleShowA} className="mb-2">
+            new chat
+          </Button>
+          <Toast show={showA} onClose={toggleShowA}>
+            <Toast.Header>
+              <img
+                src="holder.js/20x20?text=%20"
+                className="rounded me-3"
+                alt=""
+              />
+              <strong className="me-auto">Enter friend's username</strong>
+            </Toast.Header>
+            <Toast.Body>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>UserName</Form.Label>
+                <Form.Control type="username" placeholder="Enter username" />
+              </Form.Group>
+              <Button variant="primary" type="submit">
+                Submit
+              </Button>
+            </Toast.Body>
+          </Toast>
         </Col>
         <Col>
           <Link to="/">
@@ -62,17 +66,17 @@ function Conversations(props) {
         </Col>
       </Row>
       <div className='conversations-flow'>
-        {newFunction()}
+        {renderConvos()}
       </div>
     </Container>
 
   );
 
-  function newFunction() {
+  function renderConvos() {
     return props.conversations.filter(c => {
-      return (c.users.includes(props.online));
+      return (c.users.includes(props.online.userName));
     }).map(cf => {
-      let otherUserName = cf.users[0] !== props.online ? cf.users[0] : cf.users[1];
+      let otherUserName = cf.users[0] !== props.online.userName ? cf.users[0] : cf.users[1];
       let otherUser = props.users.find(u => u.userName === otherUserName);
       // console.log()
       return (
