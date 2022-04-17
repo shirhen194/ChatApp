@@ -26,8 +26,9 @@ class App extends React.Component {
       <BrowserRouter>
         <Routes>
           {/* Routes go here v */}
-          <Route path="/" element={<Register addUser={this.addUser}/>}></Route>
           <Route path="/chat" element={<ChatScreen />}></Route>
+          <Route path="/" element={<Register addUser={this.addUser}/>}></Route>
+          
           <Route path="/signIn" element={<SignIn />}></Route>
         </Routes>
       </BrowserRouter>
