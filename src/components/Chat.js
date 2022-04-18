@@ -13,10 +13,8 @@ function Chat(props) {
         here goes chat
       </div>
       <div className='message-input'>
-        <>
-
           <Stack direction="horizontal" gap={3}>
-            <Form.Control className="me-auto" placeholder="Type your message here..." />
+            <Form.Control className="me-auto message-input-text" placeholder="Type your message here..." />
             <Button variant="secondary">Submit</Button>
             <div className="vr" />
             <DropdownButton
@@ -30,8 +28,6 @@ function Chat(props) {
               <Dropdown.Item href="#">Video</Dropdown.Item>
             </DropdownButton>
           </Stack>
-
-        </>
       </div>
     </div>
   );

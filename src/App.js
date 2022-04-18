@@ -12,11 +12,11 @@ class App extends React.Component {
     super()
     this.state = {
       users: [{ userName: "Shir1", password: "a123", displayName: "Shir", pic: "cat_shir.jpg", contacts: ["Aviad", "Reut"] },
-      { userName: "Aviad1", password: "a123", displayName: "Aviad", pic: "cat_aviad.png", contacts: ["Shir", "Reut"] },
-      { userName: "Reut1", password: "a123", displayName: "Reut", pic: "cat_reut.jpg", contacts: ["Shir", "Aviad"] }],
+      { userName: "Aviad1", password: "a123", displayName: "Aviad", pic: "cat_aviad.jpg", contacts: ["Shir"] },
+      { userName: "Reut1", password: "a123", displayName: "Reut", pic: "cat_reut.jpg", contacts: ["Shir"] }],
       conversations: [{
         users: ["Shir1", "Reut1"],
-        id: "1",
+        id: 1,
         messeages: [
           {
             user: "Shir",
@@ -62,7 +62,7 @@ class App extends React.Component {
       },
       {
         users: ["Aviad1", "Shir1"],
-        id: "2",
+        id: 2,
         messeages: [
           {
             user: "Aviad",
@@ -101,8 +101,9 @@ class App extends React.Component {
   }
 
   setOnline = (user) => {
+    let userObj = this.state.users.find(u => u.userName === user)
     this.setState({
-      online: user
+      online: userObj
     })
   }
 
@@ -111,11 +112,31 @@ class App extends React.Component {
     this.setState({
       users: newUsers
     })
+  }
 
+  addConversation = (otherUserName) => {
+    let newUsers = [...this.state.users].map((u) => {
+      if (u.displayName === this.state.online.displayName) {
+        u.contacts.push(otherUserName)
+      }
+      else if (u.displayName === otherUserName) {
+        u.contacts.push(this.state.online.displayName)
+      }
+      return u
+    })
+    let otherUser = newUsers.find(u => u.displayName === otherUserName)
+    let newConversations = [...this.state.conversations, {
+      users: [this.state.online.userName, otherUser.userName],
+      id: this.state.conversations.at(-1).id + 1,
+      messeages: []
+    }]
+    this.setState({
+      users: newUsers,
+      conversations: newConversations
+    })
   }
 
   render() {
-    console.log(this.state.online)
     return (
       <BrowserRouter>
         <Routes>
@@ -125,9 +146,10 @@ class App extends React.Component {
             <ChatScreen
               users={this.state.users}
               online={this.state.online}
-              conversations={this.state.conversations} 
+              conversations={this.state.conversations}
               setOnline={this.setOnline}
-              />}>
+              addConversation={this.addConversation}
+            />}>
           </Route>
           <Route path="/register" element={<Register addUser={this.addUser} users={this.state.users} />}></Route>
         </Routes>
