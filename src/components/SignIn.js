@@ -32,16 +32,20 @@ function SignIn(props) {
   const renderSubmit = () => {
     if (Object.keys(findMatch()).length > 0) {
       return (
-        <Button variant="primary" type="button" onClick={() => handleSubmit(findMatch())}>
-          WELCOME
-        </Button>
+        <input type="button"
+          value="WELCOME"
+          onKeyDown={() => handleSubmit(findMatch())}
+          onClick={() => handleSubmit(findMatch())}
+        />
       )
     } else {
       return (
         <Link to='/chat'>
-          <Button variant="primary" type="button" onClick={() => handleSubmit(findMatch())}>
-            WELCOME
-          </Button>
+          <input type="button"
+            value="WELCOME"
+            onKeyDown={() => handleSubmit(findMatch())}
+            onClick={() => handleSubmit(findMatch())}
+          />
         </Link>
       )
     }
@@ -74,50 +78,36 @@ function SignIn(props) {
   }
 
   return (
-    <Container className='register_signIn'>
-      <Form>
-        <Form.Group className="mb-3">
-          <Form.Label>UserName</Form.Label>
-          <Form.Control
-            type="username"
-            ref={userName}
-            placeholder="Enter username"
-            onChange={e => setField('name', e.target.value)}
-            isInvalid={!!errors.name}
-          />
-          <Form.Control.Feedback type='invalid'>
-            {errors.name}
-          </Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group className="mb-3">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            ref={password}
-            placeholder="Password"
-            onChange={e => setField('password', e.target.value)}
-            isInvalid={!!errors.password}
-          />
-          <Form.Control.Feedback type='invalid'>
-            {errors.password}
-          </Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Remember me" />
-        </Form.Group>
-
+    <div>
+      <div className="body"></div>
+      <div className="grad"></div>
+      <div className="header">
+        <div>Chat<span>App</span></div>
+      </div>
+      <br />
+      <div className="login">
+        <input type="text" placeholder="Username" name="userName"
+          ref={userName}
+          onChange={e => setField('name', e.target.value)}
+          /><br />
+        <div className="error" style={{ color: 'red' }}>{errors.name}</div>
+        <input type="password" placeholder="Password" name="password"
+          ref={password}
+          onChange={e => setField('password', e.target.value)}
+          /><br />
+        <div className="error" style={{ color: 'red' }}>{errors.password}</div>
+        <div className="remember-checkbox">
+          <input type="checkbox" name="remember" />
+          <span>&nbsp;Remember me</span><br />
+        </div>
         {renderSubmit()}
-
-        Not a member?
-        <Link to="/register">
-          <Button variant="link" type="button" >
+        <div style={{ color: 'white' }}>Not a member?&nbsp;
+          <Link to="/register">
             Click Here
-          </Button>
-        </Link>
-      </Form>
-    </Container>
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 }
 
