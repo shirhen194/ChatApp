@@ -1,7 +1,9 @@
-function Message(message){
+
+
+function Message({MessageArray}){
     return(
         <div>
-            
+            <li> {MessageArray.value}</li>
         </div>
     );
 
