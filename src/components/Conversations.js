@@ -33,7 +33,13 @@ function Conversations(props) {
     else if (props.online.userName === contactName.current.value) {
       setErrContact("You can't add yourself!")
     }
-    else{
+    else if (contactName.current.value === "") {
+      setErrContact("Please enter a name!")
+    }
+    else if (!props.users.includes(contactName.current.value)) {
+      setErrContact("This user does not exist!")
+    }
+    else {
       setErrContact("")
       props.addConversation(contactName.current.value)
       setShowA(false)
@@ -75,6 +81,7 @@ function Conversations(props) {
             <Form.Label>Enter friend's contact name (display name):</Form.Label>
             <Form.Control type="userName" placeholder="Display name" ref={contactName} />
           </Form.Group>
+          <div className="error" style={{ color: 'red' }}>{errorContact}</div>
           <Button variant="primary" type="submit" onClick={addContact}>
             Add
           </Button>
