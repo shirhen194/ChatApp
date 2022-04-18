@@ -13,58 +13,73 @@ import Form from 'react-bootstrap/Form';
 
 function Conversations(props) {
 
-  const [showA, setShowA] = useState(false);
-  const [showB, setShowB] = useState(false);
+  const [showA, setShowA] = useState(false)
+  const [errorContact, setErrContact] = useState("")
 
-  const toggleShowA = () => setShowA(!showA);
-  const toggleShowB = () => setShowB(!showB);
+  const contactName = useRef(null)
+
+  const toggleShowA = () => setShowA(!showA)
 
   const signOut = () => {
     props.setOnline(null)
   }
 
+  const addContact = () => {
+    //if already has
+    if (props.online.contacts.includes(contactName.current.value)) {
+      setErrContact("You already have this contact!")
+    }
+    //if same name as myself?
+    else if (props.online.userName === contactName.current.value) {
+      setErrContact("You can't add yourself!")
+    }
+    else{
+      setErrContact("")
+      props.addConversation(contactName.current.value)
+      setShowA(false)
+    }
+  }
 
   return (
     <Container>
-      <Row className='self'>
-        <Col> <img
-          className="convos-pic"
+      <div className='top-convos'>
+        <img
+          className="profile-pic"
           src={props.online.pic}
           alt="profile_pic"
-        /></Col>
-        <Col xs={4}></Col>
-        <Col>
-          <Button onClick={toggleShowA} className="mb-2">
-            new chat
-          </Button>
-          <Toast show={showA} onClose={toggleShowA}>
-            <Toast.Header>
-              <img
-                src="holder.js/20x20?text=%20"
-                className="rounded me-3"
-                alt=""
-              />
-              <strong className="me-auto">Enter friend's username</strong>
-            </Toast.Header>
-            <Toast.Body>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>UserName</Form.Label>
-                <Form.Control type="username" placeholder="Enter username" />
-              </Form.Group>
-              <Button variant="primary" type="submit">
-                Submit
-              </Button>
-            </Toast.Body>
-          </Toast>
-        </Col>
-        <Col>
-          <Link to="/">
-            <Button variant="link" type="button" onClick={signOut}>
-              Sign Out
-            </Button>
+        />
+        <div className="convo-btn" onClick={toggleShowA} >
+          Add Conversation
+        </div>
+        <div className="convo-btn">
+          <Link to="/" onClick={signOut} style={{
+            textDecoration: 'none',
+            color: 'inherit',
+            fontSize: '1rem'
+          }}>
+            Sign Out
           </Link>
-        </Col>
-      </Row>
+        </div>
+      </div>
+      <Toast show={showA} onClose={toggleShowA}>
+        <Toast.Header>
+          <img
+            src="holder.js/20x20?text=%20"
+            className="rounded me-3"
+            alt=""
+          />
+          <strong className="me-auto">New contact</strong>
+        </Toast.Header>
+        <Toast.Body>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Enter friend's contact name (display name):</Form.Label>
+            <Form.Control type="userName" placeholder="Display name" ref={contactName} />
+          </Form.Group>
+          <Button variant="primary" type="submit" onClick={addContact}>
+            Add
+          </Button>
+        </Toast.Body>
+      </Toast>
       <div className='conversations-flow'>
         {renderConvos()}
       </div>
@@ -78,13 +93,12 @@ function Conversations(props) {
     }).map(cf => {
       let otherUserName = cf.users[0] !== props.online.userName ? cf.users[0] : cf.users[1];
       let otherUser = props.users.find(u => u.userName === otherUserName);
-      // console.log()
       return (
         <div key={otherUser.displayName} className="convo">
           <img className="convos-pic" src={otherUser.pic} alt="profile_pic" />
           <div className="convo-message-wrap">
             <div id="convo-name">{otherUser.displayName}</div>
-            <div id="convo-last-message">{cf.messeages.at(-1).content}</div>
+            {cf.messeages.length > 0 && <div id="convo-last-message">{cf.messeages.at(-1).content}</div>}
           </div>
         </div>
       );
