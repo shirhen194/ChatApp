@@ -63,6 +63,7 @@ function Register(props) {
           for(var i = 0; i < (props.users).length; i++) {
             console.log(props.users[i])
         }
+        
         window.location.href = '/chat' 
     }
     return false;
