@@ -10,11 +10,11 @@ import Message from './Message'
 
 function Chat(props) {
 
-  const [MesssgeArray, setMessageArray]= useState('');
+  //const [MesssgeArray, setMessageArray]= useState('');
 
-  const sendMessage = function(message){
-    setMessageArray(message)
-  }
+  //const sendMessage = function(message){
+    //setMessageArray(message)
+  //}
 
 
 
@@ -22,9 +22,8 @@ function Chat(props) {
     <div className='chat-wrapper'>
       <div className='chat-flow'>
         here goes chat
-        <Message MessageArray={MesssgeArray}/>
       </div>
-      <ChatInput sendMessage={sendMessage}>
+      <ChatInput>
          </ChatInput>
     </div>
   );
