@@ -1,10 +1,8 @@
 import '../App.css';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom'
 import {useRef, useState} from 'react'
+
 
 
 function Register(props) {
@@ -29,6 +27,28 @@ function Register(props) {
     })
   }
 
+  const renderSubmit = () => {
+    if (Object.keys(findFormErrors()).length > 0) {
+      return (
+        <input type="button"
+          value="WELCOME"
+          onKeyDown={() => handleSubmit(findFormErrors())}
+          onClick={() => handleSubmit(findFormErrors())}
+        />
+      )
+    } else {
+      return (
+        <Link to='/chat'>
+          <input type="button"
+            value="WELCOME"
+            onKeyDown={() => handleSubmit(findFormErrors())}
+            onClick={() => handleSubmit(findFormErrors())}
+          />
+        </Link>
+      )
+    }
+  }
+
   const findFormErrors = () => {
     const { name, password, displayName, pic } = form
     const newErrors = {}
@@ -38,16 +58,16 @@ function Register(props) {
     if ( !password && password === '') newErrors.password = 'enter password!'
     else if ( !(/[^0-9]+/.test(password) && /[^A-Za-z]+/.test(password))) newErrors.password = 'password must include numbers and letters!'
     // password confirmation errors
-    if ( password.value !== password_confirmation.value) newErrors.password_confirmation = 'passwords do not match'
+    if ( (password !== password_confirmation) && password ) newErrors.password_confirmation = 'passwords do not match'
     // dispalyName errors
-    if ( !displayName || displayName === '' ) setField('displayName', name)
+    if ( (!displayName || displayName === '') && !newErrors.name ) setField('displayName', name)
     //profile pic errors TODO
     if ( !pic ) setField('pic', "aviad_cat.png")
     else if ( !pic.match(/\.(jpg|jpeg|png|gif)$/)) newErrors.pic = 'enter profile pic'
     
     return newErrors
   }
-  
+
   const handleSubmit = e => {
     const newErrors = findFormErrors()
     if ( Object.keys(newErrors).length > 0 ) {
@@ -60,99 +80,57 @@ function Register(props) {
             pic: pic.current.value,
             contacts:[]
           });
-          for(var i = 0; i < (props.users).length; i++) {
-            console.log(props.users[i])
-        }
-        
-        window.location.href = '/chat' 
+          props.setOnline(userName.current.value) 
     }
     return false;
   }
   return (
-      <Container className='register_signIn'>
-      <Form>
-        <Form.Group className="mb-3">
-          <Form.Label>UserName</Form.Label>
-          <Form.Control 
-            type="username" 
-            ref={userName} 
-            placeholder="Enter username"
-            onChange={ e => setField('name', e.target.value) }
-            isInvalid={ !!errors.name }
-          />
-          <Form.Control.Feedback type='invalid'>
-            { errors.name }
-          </Form.Control.Feedback> 
-        </Form.Group>
+    <div>
+      <div className="body"></div>
+      <div className="grad"></div>
+      <div className="header">
+        <div>Chat<span>App</span></div>
+      </div>
+      <br />
+      <div className="login">
+        <input type="text" placeholder="Username" name="userName"
+          ref={userName}
+          onChange={e => setField('name', e.target.value)}
+        /><br />
+        <div className="error" style={{ color: 'red' }}>{errors.name}</div>
 
-        <Form.Group className="mb-3">
-          <Form.Label>Password</Form.Label>
-          <Form.Control 
-            type="password" 
-            ref={password} 
-            placeholder="Password" 
-            onChange={ e => setField('password', e.target.value) } 
-            isInvalid={ !!errors.password }
-            />
-          <Form.Control.Feedback type='invalid'>
-            { errors.password }
-          </Form.Control.Feedback>
-        </Form.Group>
+        <input type="password" placeholder="Password" name="password"
+          ref={password}
+          onChange={e => setField('password', e.target.value)}
+        /><br />
+        <div className="error" style={{ color: 'red' }}>{errors.password}</div>
 
-        <Form.Group className="mb-3">
-          <Form.Label>Password confirmation</Form.Label>
-          <Form.Control 
-            type="password" 
-            ref={password_confirmation} 
-            placeholder="confirm password" 
-            onChange={ e => setField('password_confirmation', e.target.value) } 
-            isInvalid={ !!errors.password_confirmation }
-            />
-          <Form.Control.Feedback type='invalid'>
-            { errors.password_confirmation }
-          </Form.Control.Feedback>
-        </Form.Group>
+        <input type="password" placeholder="confirm password" name="password_confirmation"
+          ref={password_confirmation}
+          onChange={e => setField('password_confirmation', e.target.value)}
+        /><br />
+        <div className="error" style={{ color: 'red' }}>{errors.password_confirmation}</div>
 
-        <Form.Group className="mb-3">
-          <Form.Label>Display Name</Form.Label>
-          <Form.Control 
-            type="name" 
-            ref={displayName} 
-            placeholder="Enter display name" 
-            onChange={ e => setField('displayName', e.target.value) }
-            isInvalid={ !!errors.displayName }
-         />
-          <Form.Control.Feedback type='invalid'>
-            { errors.displayName }
-          </Form.Control.Feedback>
-        </Form.Group>
+        <input type="displayName" placeholder="display name" name="displayName"
+          ref={displayName}
+          onChange={e => setField('displayName', e.target.value)}
+        /><br />
+        <div className="error" style={{ color: 'red' }}>{errors.displayName}</div> 
 
-        <Form.Group className="mb-3">
-          <Form.Label >profile_pic</Form.Label>
-          <Form.Control 
-            type="file" 
-            ref={pic} 
-            placeholder="Enter profile picture" 
-            onChange={ e => setField('pic', e.target.value) }
-            isInvalid={ !!errors.pic }
-         />
-          <Form.Control.Feedback type='invalid'>
-            { errors.pic }
-          </Form.Control.Feedback>
-        </Form.Group>
-
-        <Button variant="primary" type="button" onClick={()=>handleSubmit(findFormErrors())}>
-          WELCOME
-        </Button>
-        
-        Already a member?
-        <Link to="/">
-        <Button variant="link" type="button" >
-          Click Here
-        </Button>
-        </Link>
-      </Form>
-      </Container>
+        <input type="file" placeholder="Enter profile picture" name="pic"
+          ref={pic}
+          onChange={e => setField('pic', e.target.value)}
+        /><br />
+        <div className="error" style={{ color: 'red' }}>{errors.pic}</div>
+   
+        {renderSubmit()}
+        <div style={{ color: 'white' }}>Already a member?&nbsp;
+          <Link to="/">
+            Click Here
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 }
 
