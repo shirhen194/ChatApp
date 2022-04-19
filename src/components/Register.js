@@ -28,7 +28,7 @@ function Register(props) {
   }
 
   const renderSubmit = () => {
-    if (Object.keys(findFormErrors()).length > 0) {
+     if (Object.keys(findFormErrors()).length > 0) {
       return (
         <input type="button"
           value="WELCOME"
@@ -50,19 +50,25 @@ function Register(props) {
   }
 
   const findFormErrors = () => {
-    const { name, password, displayName, pic } = form
+    const { name, password, password_confirmation, displayName, pic } = form
     const newErrors = {}
     // userName errors
     if ( !name || name === '' ) newErrors.name = 'enter username!'
+    else if ( !newErrors.name ) {
+      for (var i = 0; i < (props.users).length; i++) {
+        if (props.users[i].userName === name ) newErrors.name = 'username is not available'
+      }
+    }
     // password errors
     if ( !password && password === '') newErrors.password = 'enter password!'
     else if ( !(/[^0-9]+/.test(password) && /[^A-Za-z]+/.test(password))) newErrors.password = 'password must include numbers and letters!'
     // password confirmation errors
     if ( (password !== password_confirmation) && password ) newErrors.password_confirmation = 'passwords do not match'
     // dispalyName errors
-    if ( (!displayName || displayName === '') && !newErrors.name ) setField('displayName', name)
+    if ( !displayName || displayName === '' ) newErrors.displayName = 'enter display name'
+    else if (displayName.length > 30) newErrors.displayName = 'no more than 30 characters'
     //profile pic errors TODO
-    if ( !pic ) setField('pic', "aviad_cat.png")
+    if ( !pic ) setField('pic', "cat_aviad.jpg")
     else if ( !pic.match(/\.(jpg|jpeg|png|gif)$/)) newErrors.pic = 'enter profile pic'
     
     return newErrors
