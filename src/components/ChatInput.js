@@ -10,10 +10,9 @@ function ChatInput(props){
     return(
         <div className='message-input'>
         <>
-
           <Stack direction="horizontal" gap={3}>
             <Form.Control  ref={message} className="me-auto" placeholder="Type your message here..."/>
-            <Button variant="secondary" onClick={() => props.addMessage(message.current.value,props.coversation_id)} >Submit</Button>
+            <Button variant="secondary" onClick={() => props.addMessage(message.current.value,props.conversation_id)} >Submit</Button>
             <div className="vr" />
             <DropdownButton
               variant="outline-secondary"

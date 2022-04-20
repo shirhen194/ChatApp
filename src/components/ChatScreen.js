@@ -8,17 +8,17 @@ class ChatScreen extends React.Component {
 
   constructor() {
     super()
-    this.state = {conversation_id:1}
+    this.state = {conversation_id:0}
     this.changeConversationId = this.changeConversationId.bind(this)
   }
   
   changeConversationId =(c_id)=>{
     this.setState({conversation_id:c_id});
   } 
-  
 
   render() {
     return (
+      
     // <Container fluid>
     //   <Row style={{
     //       height: '80%'
@@ -29,7 +29,13 @@ class ChatScreen extends React.Component {
     // </Container>
     <div className='web-chat'>
       <div className='conversations'><Conversations changeConversationId={this.changeConversationId} {...this.props} /></div>
-      <div className='chat'><Chat conversation_id={this.state.conversation_id} conversations={this.props.conversations}  /></div>
+       <div className='chat'>
+         <Chat
+          conversation_id={this.state.conversation_id}
+          conversations={this.props.conversations}
+          addMessage={this.props.addMessage}>
+         </Chat>
+       </div>
     </div>
     );
   }

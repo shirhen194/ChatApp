@@ -100,11 +100,11 @@ function Conversations(props, changeConversationId) {
       let otherUserName = cf.users[0] !== props.online.userName ? cf.users[0] : cf.users[1];
       let otherUser = props.users.find(u => u.userName === otherUserName);
       return (
-        <div key={otherUser.displayName} className="convo">
+        <div key={otherUser.displayName} className="convo"  onClick={()=> props.changeConversationId(cf.id)}>
           <img className="convos-pic" src={otherUser.pic} alt="profile_pic" />
           <div className="convo-message-wrap">
             <div id="convo-name">{otherUser.displayName}</div>
-            {cf.messeages.length > 0 && <div id="convo-last-message">{cf.messeages.at(-1).content}</div>}
+            {cf.messages.length > 0 && <div id="convo-last-message">{cf.messages.at(-1).content}</div>}
           </div>
         </div>
       );

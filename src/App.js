@@ -13,6 +13,11 @@ class App extends React.Component {
       { userName: "Aviad1", password: "a123", displayName: "Aviad", pic: "cat_aviad.jpg", contacts: ["Shir"] },
       { userName: "Reut1", password: "a123", displayName: "Reut", pic: "cat_reut.jpg", contacts: ["Shir"] }],
       conversations: [{
+        users:["",""],
+        id:0,
+        messages:[]
+      },
+        {
         users: ["Shir1", "Reut1"],
         id: 1,
         messages: [
@@ -100,14 +105,17 @@ class App extends React.Component {
   }
 
 
-  // add message to the array of messages.
-  addMessage = (message, c_index)=> {
+  // add message to the array of messages to the right conversation.
+  addMessage = function(message, c_id) {
+    // TODO: change c_index to find the right index by c_id
+    //TODO: add user information to new message
+    let c_index = c_id;
     let conversations = [...this.state.conversations];
-
+    let new_message={user:"", type:'text', content:message}
     if (c_index !== -1){
       let updated_conversation = {
         ...conversations[c_index],
-        messages: [...conversations[c_index].messages, message]
+        messages: [...conversations[c_index].messages, new_message]
       }
       conversations[c_index] = updated_conversation
       this.setState({conversations})
