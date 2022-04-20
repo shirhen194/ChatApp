@@ -1,25 +1,19 @@
 import '../App.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter, Routes, Link, Route } from 'react-router-dom'
-import { InputGroup, Dropdown, DropdownButton, FormControl, Stack } from 'react-bootstrap';
+import {Dropdown, DropdownButton, Stack } from 'react-bootstrap';
 import { useRef } from "react";
 
-function ChatInput({setMessageArray}){
-    const message = useRef(null);
-
-    const sendMessage=function(){
-      setMessageArray(message.current.value);
-    }
+function ChatInput(props){
+    const message = useRef("");
     return(
         <div className='message-input'>
         <>
 
           <Stack direction="horizontal" gap={3}>
             <Form.Control  ref={message} className="me-auto" placeholder="Type your message here..."/>
-            <Button variant="secondary" onClick={sendMessage} >Submit</Button>
+            <Button variant="secondary" onClick={() => props.addMessage(message.current.value,props.coversation_id)} >Submit</Button>
             <div className="vr" />
             <DropdownButton
               variant="outline-secondary"

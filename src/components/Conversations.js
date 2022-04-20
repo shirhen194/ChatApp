@@ -1,8 +1,7 @@
 import '../App.css';
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom'
 import Toast from 'react-bootstrap/Toast'
@@ -11,9 +10,7 @@ import Form from 'react-bootstrap/Form';
 
 // import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 
-//const messageList = 
-
-function Conversations(props) {
+function Conversations(props, changeConversationId) {
 
   const [showA, setShowA] = useState(false)
   const [errorContact, setErrContact] = useState("")
@@ -93,6 +90,7 @@ function Conversations(props) {
         {renderConvos()}
       </div>
     </Container>
+
   );
 
   function renderConvos() {

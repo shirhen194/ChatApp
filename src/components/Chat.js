@@ -1,30 +1,19 @@
 import '../App.css';
 import ChatInput from './ChatInput';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Dropdown, DropdownButton, Stack } from 'react-bootstrap';
-// import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
-import useState from 'react'
-import Message from './Message'
+import Messages from './Messages'
+
+
 
 function Chat(props) {
 
-  //const [MesssgeArray, setMessageArray]= useState('');
-
-  //const sendMessage = function(message){
-    //setMessageArray(message)
-  //}
-
-
-
   return (
     <div className='chat-wrapper'>
+      <div className='chat_heder'> chat heder</div>
       <div className='chat-flow'>
-        here goes chat
+        <Messages conversation_id={props.conversation_id} conversations={props.conversations}></Messages>
       </div>
-      <ChatInput>
-         </ChatInput>
+      <ChatInput {...props}></ChatInput>
     </div>
   );
 }
