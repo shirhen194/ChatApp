@@ -1,11 +1,9 @@
 import './App.css';
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Register from './components/Register';
 import ChatScreen from './components/ChatScreen';
 import SignIn from './components/SignIn';
 import React from 'react';
-import Conversations from './components/Conversations';
 
 class App extends React.Component {
   constructor() {
@@ -15,9 +13,14 @@ class App extends React.Component {
       { userName: "Aviad1", password: "a123", displayName: "Aviad", pic: "cat_aviad.jpg", contacts: ["Shir"] },
       { userName: "Reut1", password: "a123", displayName: "Reut", pic: "cat_reut.jpg", contacts: ["Shir"] }],
       conversations: [{
+        users:["",""],
+        id:0,
+        messages:[]
+      },
+        {
         users: ["Shir1", "Reut1"],
         id: 1,
-        messeages: [
+        messages: [
           {
             user: "Shir",
             type: "text",
@@ -63,7 +66,7 @@ class App extends React.Component {
       {
         users: ["Aviad1", "Shir1"],
         id: 2,
-        messeages: [
+        messages: [
           {
             user: "Aviad",
             type: "text",
@@ -98,7 +101,30 @@ class App extends React.Component {
       }],
       online: "",
     }
+    this.addMessage = this.addMessage.bind(this)
   }
+
+
+  // add message to the array of messages to the right conversation.
+  addMessage = function(message, c_id) {
+    // TODO: change c_index to find the right index by c_id
+    //TODO: add user information to new message
+    let c_index = c_id;
+    let conversations = [...this.state.conversations];
+    let new_message={user: this.state.online.displayName, type:'text', content:message}
+    if (c_index !== -1){
+      let updated_conversation = {
+        ...conversations[c_index],
+        messages: [...conversations[c_index].messages, new_message]
+      }
+      conversations[c_index] = updated_conversation
+      this.setState({conversations})
+    }
+    else{
+      console.log("A bug occured! Trying to add a message to an undefined conversation!")
+    }
+  }
+
 
   setOnline = (user) => {
     let userObj = this.state.users.find(u => u.userName === user)
@@ -128,7 +154,7 @@ class App extends React.Component {
     let newConversations = [...this.state.conversations, {
       users: [this.state.online.userName, otherUser.userName],
       id: this.state.conversations.at(-1).id + 1,
-      messeages: []
+      messages: []
     }]
     this.setState({
       users: newUsers,
@@ -149,6 +175,7 @@ class App extends React.Component {
               conversations={this.state.conversations}
               setOnline={this.setOnline}
               addConversation={this.addConversation}
+              addMessage={this.addMessage}
             />}>
           </Route>
           <Route path="/register" element={<Register addUser={this.addUser} users={this.state.users} />}></Route>
@@ -157,5 +184,4 @@ class App extends React.Component {
     );
   }
 }
-
 export default App;
