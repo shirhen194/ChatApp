@@ -16,6 +16,7 @@
 .cute {
   color: black !important;
 }
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -35,11 +36,19 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
+.register_signIn {
+  display: flex;
+  width: 60%;
+  justify-content: center;
+  margin: 20 auto;
+  border-style: double;
+}
 
 .web-chat {
   width: 100vw;
@@ -50,64 +59,96 @@
 }
 
 .chat {
-  flex-grow: 2; 
+  flex-grow: 2;
 }
 
 .conversations {
   width: 30vw;
-  background-color:cadetblue;
+  background-color: cadetblue;
 }
 
 .chat-wrapper {
   display: flex;
   align-items: stretch;
   flex-direction: column;
+  height: 100%;
 }
 
 .chat-flow {
-  flex-grow: 3; 
-  height: 90vh;
-  background-color:aliceblue;
+  flex-grow: 3;
+  background-color: aliceblue;
 }
 
-.message-input{
-  flex-grow: 2;
-  height: 10vh;
+.message-input {
+  display: flex;
+  height: 15vh;
   background-color: aquamarine;
+  justify-content: center;
+  align-items: center;
 }
 
-.conversations-flow{
+.message-input>div {
+  width: 95%;
+}
+
+.message-input-text {
+  height: 10vh;
+
+}
+
+.conversations-flow {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
 }
 
-.convo{
+.top-convos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 15vh;
+}
+
+.convo {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
   height: 17vh;
-  background-color: #caf0f8;
+  background-color: #059D98;
   margin: 1vh 1vh 1vh 1vh;
   border-radius: calc(.7rem - 1px);
-  border: 0.2vw solid #2ec4b6;
+  border: 0.2vw solid #057672;
   width: 95%;
-  box-shadow: 0 2vh 4vh 0 rgba(0,0,0,0.2);
-  /* transition: 0.3s; */
-
+  box-shadow: 0 2vh 4vh 0 rgba(0, 0, 0, 0.2);
+  transition: all .15s ease-in-out;
 }
 
-.convos-pic{
-  width: 8vw;
-  height: 15vh;
+.convo:hover {
+  cursor: pointer;
+  background-color: #05827D;
+  transform: scale(1.05);
+}
+
+.convos-pic {
+  width: 12vh;
+  height: 12vh;
   border-radius: 50%;
   margin: 2vh;
   box-shadow: 0 0 2vh rgb(0 0 0 / 20%);
 }
 
-.convo-message-wrap{
+.profile-pic {
+  width: 10vh;
+  height: 10vh;
+  border-radius: 50%;
+  margin: 2vh;
+  box-shadow: 0 0 2vh rgb(0 0 0 / 20%);
+}
+
+.convo-message-wrap {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -115,20 +156,241 @@
   height: 17vh;
   width: 80%;
   text-align: left;
-  border-left: .1vh solid #2ec4b6;
+  border-left: .1vh solid #057672;
 }
 
-#convo-name{
-  font-size: 1.5vw;
+.convo-btn {
+  width: 8vw;
+  height: 7vh;
+  background-color: #3dccc7;
+  text-align: center;
+  border: 0.2vw solid #2ec4b6;
+  border-radius: .25rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  transition: all .15s ease-in-out;
+  line-height: 1.1rem;
+}
+
+.convo-btn:hover {
+  background-color: #3dd5ca;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+#convo-name {
+  font-size: 1rem;
   width: 100%;
   margin: 0.5vw;
-  border-bottom: 1px solid #2ec4b6;
+  border-bottom: 1px solid #057672;
   padding-left: 1vw;
 }
 
-#convo-last-message{
+#convo-last-message {
   text-align: left;
-  font-size: 1vw;
+  font-size: .8rem;
   width: 100%;
   padding-left: 1vw;
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+
+  color: #fff;
+  font-family: Arial;
+  font-size: 12px;
+}
+
+.body {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -40px;
+  bottom: -40px;
+  width: auto;
+  height: auto;
+  background-image: url("../public/background.jpg");
+  background-size: cover;
+  -webkit-filter: blur(3px);
+  z-index: 0;
+}
+
+.grad {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -40px;
+  bottom: -40px;
+  width: auto;
+  height: auto;
+  background: -webkit-gradient(linear,
+      left top,
+      left bottom,
+      color-stop(0%, rgba(0, 0, 0, 0)),
+      color-stop(100%, rgba(0, 0, 0, 0.65)));
+  /* Chrome,Safari4+ */
+  z-index: 1;
+  opacity: 0.7;
+}
+
+.header {
+  position: absolute;
+  top: calc(50% - 35px);
+  left: calc(50% - 255px);
+  z-index: 2;
+}
+
+.header div {
+  float: left;
+  color: #fff;
+  font-family: "Exo", sans-serif;
+  font-size: 3rem;
+  font-weight: 400;
+  text-shadow: 6vh rgba(0, 0, 0, 0.922);
+
+}
+
+.header div span {
+  color: rgba(146, 12, 146, 0.936) !important;
+}
+
+.login {
+  position: absolute;
+  top: calc(50% - 75px);
+  left: calc(50% - 50px);
+  height: 150px;
+  width: 350px;
+  padding: 10px;
+  z-index: 2;
+}
+
+.login input[type="text"] {
+  width: 250px;
+  height: 30px;
+  background: transparent;
+  border: .3vh solid rgba(255, 255, 255, 0.6);
+  border-radius: 2px;
+  color: #fff;
+  font-family: "Exo", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 4px;
+}
+
+.login input[type="password"] {
+  width: 250px;
+  height: 30px;
+  background: transparent;
+  border: .3vh solid rgba(255, 255, 255, 0.6);
+  border-radius: 2px;
+  color: #fff;
+  font-family: "Exo", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 4px;
+  margin-top: 10px;
+}
+
+.login input[type="button"] {
+  width: 260px;
+  height: 35px;
+  background: #fff;
+  border: 1px solid #fff;
+  cursor: pointer;
+  border-radius: 2px;
+  color: #a18d6c;
+  font-family: "Exo", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 6px;
+  margin-top: 10px;
+}
+
+.login input[type="button"]:hover {
+  opacity: 0.8;
+}
+
+.login input[type="button"]:active {
+  opacity: 0.6;
+}
+
+.login input[type="text"]:focus {
+  outline: none;
+  border: .4vh solid rgba(255, 255, 255, 0.9);
+}
+
+.login input[type="password"]:focus {
+  outline: none;
+  border: .4vh solid rgba(255, 255, 255, 0.9);
+}
+
+.login input[type="button"]:focus {
+  outline: none;
+}
+
+::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+::-moz-input-placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* .remember-check {
+  color: 'white';
+  background: 'transparent';
+} */
+
+.remember-checkbox > span{
+  color: white;
+}
+
+
+
+.empty-conversation{
+  background-color: #d6c8fc;
+  text-align: center;
+  text-shadow:#282c34 ;
+  font-size: xx-large;
+  display: inline-block
+  
+
+}
+
+.chat_heder{
+  background-color: #936dfa;
+  text-align: center;
+  font-size: large;
+}
+
+.RightMessageWraper{
+  background-color: rgba(132, 178, 248, 0.822);
+  width:fit-content;
+  height:fit-content;
+}
+
+.RightMessage{
+  color:#282c34;
+  text-align: center;
+}
+
+.LeftMessageWraper{
+  background-color:rgb(203, 239, 241);
+  width:fit-content;
+  height:fit-content;
+
+}
+
+.LeftMessage{
+  color:#225aca;
+  text-align: center;
 }
