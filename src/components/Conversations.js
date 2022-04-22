@@ -1,8 +1,7 @@
 import '../App.css';
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom'
 import Toast from 'react-bootstrap/Toast'
@@ -11,7 +10,7 @@ import Form from 'react-bootstrap/Form';
 
 // import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 
-function Conversations(props) {
+function Conversations(props, changeConversationId) {
 
   const [showA, setShowA] = useState(false)
   const [errorContact, setErrContact] = useState("")
@@ -101,11 +100,11 @@ function Conversations(props) {
       let otherUserName = cf.users[0] !== props.online.userName ? cf.users[0] : cf.users[1];
       let otherUser = props.users.find(u => u.userName === otherUserName);
       return (
-        <div key={otherUser.displayName} className="convo">
+        <div key={otherUser.displayName} className="convo"  onClick={()=> props.changeConversationId(cf.id)}>
           <img className="convos-pic" src={otherUser.pic} alt="profile_pic" />
           <div className="convo-message-wrap">
             <div id="convo-name">{otherUser.displayName}</div>
-            {cf.messeages.length > 0 && <div id="convo-last-message">{cf.messeages.at(-1).content}</div>}
+            {cf.messages.length > 0 && <div id="convo-last-message">{cf.messages.at(-1).content}</div>}
           </div>
         </div>
       );
