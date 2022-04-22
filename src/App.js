@@ -111,7 +111,7 @@ class App extends React.Component {
     //TODO: add user information to new message
     let c_index = c_id;
     let conversations = [...this.state.conversations];
-    let new_message={user:"", type:'text', content:message}
+    let new_message={user: this.state.online.displayName, type:'text', content:message}
     if (c_index !== -1){
       let updated_conversation = {
         ...conversations[c_index],
