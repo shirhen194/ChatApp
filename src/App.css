@@ -356,9 +356,41 @@ body {
 
 
 
+.empty-conversation{
+  background-color: #d6c8fc;
+  text-align: center;
+  text-shadow:#282c34 ;
+  font-size: xx-large;
+  display: inline-block
+  
 
+}
 
+.chat_heder{
+  background-color: #936dfa;
+  text-align: center;
+  font-size: large;
+}
+
+.RightMessageWraper{
+  background-color: rgba(132, 178, 248, 0.822);
+  width:fit-content;
+  height:fit-content;
+}
 
 .RightMessage{
-  color:#61dafb;
+  color:#282c34;
+  text-align: center;
+}
+
+.LeftMessageWraper{
+  background-color:rgb(203, 239, 241);
+  width:fit-content;
+  height:fit-content;
+
+}
+
+.LeftMessage{
+  color:#225aca;
+  text-align: center;
 }

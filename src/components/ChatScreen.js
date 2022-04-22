@@ -44,7 +44,7 @@ class ChatScreen extends React.Component {
         </Chat>
       </div>
       }
-    </div>
+      </div>
     );
   }
 }

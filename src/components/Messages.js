@@ -2,14 +2,16 @@ import '../App.css';
 
 
 function LeftMessage(props){
-    return(
-        <ul>{props.content}</ul>
+    return(<div class="LeftMessageWraper">
+            <ul class='LeftMessage'>{props.content}</ul>
+        </div>
     );
 }
 
 function RightMessage(props){
-    return(
+    return(<div class="RightMessageWraper">
         <ul class='RightMessage'>{props.content}</ul>
+        </div>
     );
 }
 
