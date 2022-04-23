@@ -104,14 +104,20 @@ class App extends React.Component {
     this.addMessage = this.addMessage.bind(this)
   }
 
+  componentDidMount = () => {
+    this.setState({
+      online: this.state.users[0]
+    })
+  }
+
 
   // add message to the array of messages to the right conversation.
-  addMessage = function(message, c_id) {
+  addMessage = function(message, c_id, type) {
     // TODO: change c_index to find the right index by c_id
     //TODO: add user information to new message
     let c_index = c_id;
     let conversations = [...this.state.conversations];
-    let new_message={user: this.state.online.displayName, type:'text', content:message}
+    let new_message={user: this.state.online.displayName, type:type, content:message}
     if (c_index !== -1){
       let updated_conversation = {
         ...conversations[c_index],
@@ -124,7 +130,6 @@ class App extends React.Component {
       console.log("A bug occured! Trying to add a message to an undefined conversation!")
     }
   }
-
 
   setOnline = (user) => {
     let userObj = this.state.users.find(u => u.userName === user)
