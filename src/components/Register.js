@@ -9,8 +9,8 @@ function Register(props) {
   const userName = useRef(null)
   const password = useRef(null)
   const password_confirmation = useRef(null)
-  const displayName = useRef(null)
-  const pic = useRef(null)
+  let displayName = useRef(null)
+  let pro_pic = useRef(null)
 
   const [ form, setForm ] = useState({})
   const [ errors, setErrors ] = useState({})
@@ -28,12 +28,14 @@ function Register(props) {
   }
 
   const renderSubmit = () => {
-     if (Object.keys(findFormErrors()).length > 0) {
+    const errors = findFormErrors()
+    const error_keys = Object.keys(errors)
+     if (error_keys.length > 0) {
       return (
         <input type="button"
           value="WELCOME"
-          onKeyDown={() => handleSubmit(findFormErrors())}
-          onClick={() => handleSubmit(findFormErrors())}
+          onKeyDown={() => handleSubmit(errors)}
+          onClick={() => handleSubmit(errors)}
         />
       )
     } else {
@@ -41,8 +43,8 @@ function Register(props) {
         <Link to='/chat'>
           <input type="button"
             value="WELCOME"
-            onKeyDown={() => handleSubmit(findFormErrors())}
-            onClick={() => handleSubmit(findFormErrors())}
+            onKeyDown={() => handleSubmit(errors)}
+            onClick={() => handleSubmit(errors)}
           />
         </Link>
       )
@@ -50,8 +52,9 @@ function Register(props) {
   }
 
   const findFormErrors = () => {
-    const { name, password, password_confirmation, displayName, pic } = form
+    const { name, password, password_confirmation, display_Name, pic } = form
     const newErrors = {}
+
     // userName errors
     if ( !name || name === '' ) newErrors.name = 'enter username!'
     else if ( !newErrors.name ) {
@@ -59,31 +62,37 @@ function Register(props) {
         if (props.users[i].userName === name ) newErrors.name = 'username is not available'
       }
     }
+
     // password errors
     if ( !password && password === '') newErrors.password = 'enter password!'
     else if ( !(/[^0-9]+/.test(password) && /[^A-Za-z]+/.test(password))) newErrors.password = 'password must include numbers and letters!'
+    
     // password confirmation errors
     if ( (password !== password_confirmation) && password ) newErrors.password_confirmation = 'passwords do not match'
-    // dispalyName errors
-    if ( !displayName || displayName === '' ) newErrors.displayName = 'enter display name'
-    else if (displayName.length > 30) newErrors.displayName = 'no more than 30 characters'
-    //profile pic errors TODO
-    if ( !pic ) setField('pic', "cat_aviad.jpg")
-    else if ( !pic.match(/\.(jpg|jpeg|png|gif)$/)) newErrors.pic = 'enter profile pic'
+    
+    // displayName errors
+    if ( !display_Name || display_Name === '' ) displayName = name
+    else if (display_Name.length > 30) newErrors.display_Name = 'no more than 30 characters'
+    else displayName = display_Name
+    
+    // profile picture errors
+    if ( !pic || pic === '') pro_pic = "cat_aviad.jpg"
+    else if ( !pic.name.match(/\.(jpg|jpeg|png|gif)$/)) newErrors.pic = 'enter profile pic'
+    else pro_pic = URL.createObjectURL(pic)
     
     return newErrors
   }
 
-  const handleSubmit = e => {
-    const newErrors = findFormErrors()
-    if ( Object.keys(newErrors).length > 0 ) {
-      setErrors(newErrors)
+  const handleSubmit = errors => {
+    if ( Object.keys(errors).length > 0 ) {
+      setErrors(errors)
     } else {
+      console.log(displayName)
         props.users.push({                                    
             userName:userName.current.value,
             password: password.current.value,
-            displayName: displayName.current.value,
-            pic: pic.current.value,
+            displayName: displayName,
+            pic: pro_pic,
             contacts:[]
           });
           props.setOnline(userName.current.value) 
@@ -119,13 +128,13 @@ function Register(props) {
 
         <input type="displayName" placeholder="display name" name="displayName"
           ref={displayName}
-          onChange={e => setField('displayName', e.target.value)}
+          onChange={e => setField('display_Name', e.target.value)}
         /><br />
-        <div className="error" style={{ color: 'red' }}>{errors.displayName}</div> 
+        <div className="error" style={{ color: 'red' }}>{errors.display_Name}</div> 
 
         <input type="file" placeholder="Enter profile picture" name="pic"
-          ref={pic}
-          onChange={e => setField('pic', e.target.value)}
+          ref={pro_pic}
+          onChange={e => setField('pic', e.target.files[0])}
         /><br />
         <div className="error" style={{ color: 'red' }}>{errors.pic}</div>
    
