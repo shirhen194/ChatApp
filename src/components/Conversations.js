@@ -29,13 +29,13 @@ function Conversations(props, changeConversationId) {
       setErrContact("You already have this contact!")
     }
     //if same name as myself?
-    else if (props.online.userName === contactName.current.value) {
+    else if (props.online.displayName === contactName.current.value) {
       setErrContact("You can't add yourself!")
     }
     else if (contactName.current.value === "") {
       setErrContact("Please enter a name!")
     }
-    else if (!props.users.includes(contactName.current.value)) {
+    else if (!props.users.find(u => u.displayName === contactName.current.value)) {
       setErrContact("This user does not exist!")
     }
     else {
