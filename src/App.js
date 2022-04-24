@@ -106,7 +106,7 @@ class App extends React.Component {
 
   componentDidMount = () => {
     this.setState({
-      online: this.state.users[0]
+      online: this.state.users[2]
     })
   }
 

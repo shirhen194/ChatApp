@@ -410,10 +410,10 @@ body {
   background-color: rgba(132, 178, 248, 0.822);
   width:fit-content;
   height:fit-content;
-  margin-right: 0;
-  display: block;
   margin-left: auto;
   border-radius: calc(.7rem - 1px);
+  word-wrap: break-word;
+  max-width: 45vh;
 }
 
 .RightMessage{
