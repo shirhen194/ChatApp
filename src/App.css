@@ -78,6 +78,7 @@
   flex-grow: 3;
   background-color: aliceblue;
   overflow: scroll;
+  overflow-x: hidden;
 }
 
 .message-input {
@@ -174,6 +175,7 @@
   font-size: 1rem;
   transition: all .15s ease-in-out;
   line-height: 1.1rem;
+  margin:0.5vw;
 }
 
 .convo-btn:hover {
@@ -362,9 +364,8 @@ body {
   text-align: center;
   text-shadow:#282c34 ;
   font-size: xx-large;
-  display: inline-block
-  
-
+  display: inline-block;
+  width: 100%;
 }
 
 .chat_heder{
@@ -380,7 +381,7 @@ body {
   margin-left: auto;
   border-radius: calc(.7rem - 1px);
   word-wrap: break-word;
-  max-width: 45vh;
+  max-width: 52vh;
 }
 
 .RightMessage{
@@ -394,6 +395,8 @@ body {
   width:fit-content;
   height:fit-content;
   border-radius: calc(.7rem - 1px);
+  word-wrap: break-word;
+  max-width: 52vh;
 }
 
 .LeftMessage{
