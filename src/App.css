@@ -78,6 +78,7 @@
   flex-grow: 3;
   background-color: aliceblue;
   overflow: scroll;
+  scroll-behavior: smooth;
 }
 
 .message-input {
@@ -358,19 +359,22 @@ body {
 
 
 .empty-conversation{
-  background-color: #d6c8fc;
+
   text-align: center;
   text-shadow:#282c34 ;
   font-size: xx-large;
-  display: inline-block
-  
-
+  display: inline-block;
+  width: 100%;
+  background-color: #efdaff;
 }
 
 .chat_heder{
-  background-color: #936dfa;
-  text-align: center;
+  background-color:rgb(151, 165, 192);
+  text-align: left;
   font-size: large;
+  padding:1vh;
+  border-bottom: 1hv;
+
 }
 
 .RightMessageWraper{

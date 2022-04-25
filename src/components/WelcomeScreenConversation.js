@@ -1,7 +1,10 @@
+ 
+ 
+ 
  function WelcomeScreenConversation(props){
     return(
         <div>
-            WELCOME TO ChatApp
+            Welcome to chatApp
         </div>
     );
  }
