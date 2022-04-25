@@ -79,6 +79,7 @@
   background-color: aliceblue;
   overflow: scroll;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 .message-input {
@@ -175,6 +176,7 @@
   font-size: 1rem;
   transition: all .15s ease-in-out;
   line-height: 1.1rem;
+  margin:0.5vw;
 }
 
 .convo-btn:hover {
@@ -302,6 +304,34 @@ body {
   margin-top: 10px;
 }
 
+.login input[type="file"] {
+  width: 250px;
+  height: 30px;
+  background: transparent;
+  border: .3vh solid rgba(255, 255, 255, 0.6);
+  border-radius: 2px;
+  color: #fff;
+  font-family: "Exo", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 4px;
+  margin-top: 10px;
+}
+
+.login input[type="displayName"] {
+  width: 250px;
+  height: 30px;
+  background: transparent;
+  border: .3vh solid rgba(255, 255, 255, 0.6);
+  border-radius: 2px;
+  color: #fff;
+  font-family: "Exo", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 4px;
+  margin-top: 10px;
+}
+
 .login input[type="button"] {
   width: 260px;
   height: 35px;
@@ -335,6 +365,11 @@ body {
   border: .4vh solid rgba(255, 255, 255, 0.9);
 }
 
+.login input[type="file"]:focus {
+  outline: none;
+  border: .4vh solid rgba(255, 255, 255, 0.9);
+}
+
 .login input[type="button"]:focus {
   outline: none;
 }
@@ -359,13 +394,12 @@ body {
 
 
 .empty-conversation{
-
   text-align: center;
-  text-shadow:#282c34 ;
+  text-shadow:1vh;
   font-size: xx-large;
   display: inline-block;
   width: 100%;
-  background-color: #efdaff;
+  background-color: aliceblue;
 }
 
 .chat_heder{
@@ -384,7 +418,7 @@ body {
   margin-left: auto;
   border-radius: calc(.7rem - 1px);
   word-wrap: break-word;
-  max-width: 45vh;
+  max-width: 52vh;
 }
 
 .RightMessage{
@@ -398,6 +432,8 @@ body {
   width:fit-content;
   height:fit-content;
   border-radius: calc(.7rem - 1px);
+  word-wrap: break-word;
+  max-width: 52vh;
 }
 
 .LeftMessage{

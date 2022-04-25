@@ -13,53 +13,70 @@ class App extends React.Component {
       { userName: "Aviad1", password: "a123", displayName: "Aviad", pic: "cat_aviad.jpg", contacts: ["Shir"] },
       { userName: "Reut1", password: "a123", displayName: "Reut", pic: "cat_reut.jpg", contacts: ["Shir"] }],
       conversations: [{
-        users:["",""],
-        id:0,
-        messages:[]
+        users: ["", ""],
+        id: 0,
+        messages: []
       },
-        {
+      {
         users: ["Shir1", "Reut1"],
         id: 1,
         messages: [
           {
             user: "Shir",
             type: "text",
-            content: "Hi :)"
+            content: "Hi :)",
+            timeStamp: new Date (
+              2022,4,20,14,30)
           },
           {
             user: "Reut",
             type: "text",
-            content: "Hi :)"
+            content: "Hi :)",
+            timeStamp: new Date (
+              2022,4,20,14,31)
           },
           {
             user: "Reut",
             type: "text",
-            content: "What's up?"
+            content: "What's up?",
+            timeStamp: new Date (
+              2022,4,20,14,32)
           },
           {
             user: "Shir",
             type: "text",
-            content: "I'm good, doing Pesah homework"
+            content: "I'm good, doing Pesah homework",
+            timeStamp: new Date (
+              2022,4,20,14,33)
           },
           {
             user: "Shir",
             type: "text",
-            content: "You?"
+            content: "You?",
+            timeStamp: new Date (
+              2022,4,20,14,33)
+
           },
           {
             user: "Reut",
             type: "text",
-            content: "I'm great, doing homework too"
+            content: "I'm great, doing homework too",
+            timeStamp: new Date (
+              2022,4,20,14,35)
           },
           {
             user: "Shir",
             type: "text",
-            content: "Good luckk I hope we'll both finish soon"
+            content: "Good luckk I hope we'll both finish soon",
+            timeStamp: new Date (
+              2022,4,20,14,36)
           },
           {
             user: "Reut",
             type: "text",
-            content: "Yeah me too!"
+            content: "Yeah me too!",
+            timeStamp: new Date (
+              2022,4,20,14,37)
           },
         ]
       },
@@ -70,32 +87,44 @@ class App extends React.Component {
           {
             user: "Aviad",
             type: "text",
-            content: "Hi Shir,how's it going?"
+            content: "Hi Shir,how's it going?",
+            timeStamp: new Date (
+              2022,4,22,16,31)
           },
           {
             user: "Shir",
             type: "text",
-            content: "I'm great, how are you?"
+            content: "I'm great, how are you?",
+            timeStamp: new Date (
+              2022,4,22,17,31)
           },
           {
             user: "Aviad",
             type: "text",
-            content: "Awsome, can you help me with something in github?"
+            content: "Awsome, can you help me with something in github?",
+            timeStamp: new Date (
+              2022,4,22,17,32)
           },
           {
             user: "Shir",
             type: "text",
-            content: "Sure! what do you need?"
+            content: "Sure! what do you need?",
+            timeStamp: new Date (
+              2022,4,22,17,33)
           },
           {
             user: "Aviad",
             type: "text",
-            content: "I'm trying to solve a conflict in merging to dev"
+            content: "I'm trying to solve a conflict in merging to dev",
+            timeStamp: new Date (
+              2022,4,22,17,34)
           },
           {
             user: "Shir",
             type: "text",
-            content: "Ok, I'll go check it now"
+            content: "Ok, I'll go check it now",
+            timeStamp: new Date (
+              2022,4,22,17,35)
           },
         ]
       }],
@@ -104,29 +133,38 @@ class App extends React.Component {
     this.addMessage = this.addMessage.bind(this)
   }
 
-  componentDidMount = () => {
-    this.setState({
-      online: this.state.users[2]
-    })
-  }
+  // componentDidMount = () => {
+  //   this.setState({
+  //     online: this.state.users[0]
+  //   })
+  // }
 
 
   // add message to the array of messages to the right conversation.
-  addMessage = function(message, c_id, type) {
+  addMessage = function (message, c_id, type) {
     // TODO: change c_index to find the right index by c_id
     //TODO: add user information to new message
+    //time and date stamp
+    let timeStamp = new Date().toLocaleTimeString()
+    let timeWithootSeconds = timeStamp.substring(0, timeStamp.length - 3)
+    let dateStamp = new Date().toLocaleDateString()
+    let dateWithootYear = dateStamp.substring(0, dateStamp.length - 5)
     let c_index = c_id;
     let conversations = [...this.state.conversations];
-    let new_message={user: this.state.online.displayName, type:type, content:message}
-    if (c_index !== -1){
+    let new_message = {
+      user: this.state.online.displayName,
+      type: type, content: message,
+      timeStamp: dateWithootYear + " " + timeWithootSeconds
+    }
+    if (c_index !== -1) {
       let updated_conversation = {
         ...conversations[c_index],
         messages: [...conversations[c_index].messages, new_message]
       }
       conversations[c_index] = updated_conversation
-      this.setState({conversations})
+      this.setState({ conversations })
     }
-    else{
+    else {
       console.log("A bug occured! Trying to add a message to an undefined conversation!")
     }
   }
@@ -172,7 +210,12 @@ class App extends React.Component {
       <BrowserRouter>
         <Routes>
           {/* Routes go here v */}
-          <Route path="/" element={<SignIn users={this.state.users} setOnline={this.setOnline} />}></Route>
+          <Route path="/" element={
+            <SignIn 
+              users={this.state.users} 
+              setOnline={this.setOnline}
+             />}>
+          </Route>
           <Route path="/chat" element={
             <ChatScreen
               users={this.state.users}
@@ -183,7 +226,13 @@ class App extends React.Component {
               addMessage={this.addMessage}
             />}>
           </Route>
-          <Route path="/register" element={<Register addUser={this.addUser} users={this.state.users} />}></Route>
+          <Route path="/register" element={
+            <Register 
+              addUser={this.addUser} 
+              users={this.state.users} 
+              setOnline={this.setOnline}
+            />}>
+          </Route>
         </Routes>
       </BrowserRouter>
     );

@@ -104,11 +104,15 @@ function Conversations(props, changeConversationId) {
           <img className="convos-pic" src={otherUser.pic} alt="profile_pic" />
           <div className="convo-message-wrap">
             <div id="convo-name">{otherUser.displayName}</div>
-            {cf.messages.length > 0 && cf.messages.at(-1).type === 'text' && <div id="convo-last-message">{cf.messages.at(-1).content}</div>}
+            <div style={{display: 'flex', flexDirection:'row', justifyContent: 'space-between'}}>
+            {cf.messages.length > 0 && cf.messages.at(-1).type === 'text' && <div id="convo-last-message">
+              {cf.messages.length > 0 && cf.messages.at(-1).content.length > 20 ? cf.messages.at(-1).content.slice(0, 20) + "..." : cf.messages.at(-1).content}
+              </div>}
             {cf.messages.length > 0 && cf.messages.at(-1).type === 'video' && <div id="convo-last-message">video</div>}
             {cf.messages.length > 0 && cf.messages.at(-1).type === 'recording' && <div id="convo-last-message">voice recording</div>}
             {cf.messages.length > 0 && cf.messages.at(-1).type === 'img' && <div id="convo-last-message">image</div>}
-
+            {cf.messages.at(-1).timeStamp && <div id="convo-last-message">{cf.messages.at(-1).timeStamp}</div>}
+            </div>
           </div>
         </div>
       );
