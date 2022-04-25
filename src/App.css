@@ -303,6 +303,34 @@ body {
   margin-top: 10px;
 }
 
+.login input[type="file"] {
+  width: 250px;
+  height: 30px;
+  background: transparent;
+  border: .3vh solid rgba(255, 255, 255, 0.6);
+  border-radius: 2px;
+  color: #fff;
+  font-family: "Exo", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 4px;
+  margin-top: 10px;
+}
+
+.login input[type="displayName"] {
+  width: 250px;
+  height: 30px;
+  background: transparent;
+  border: .3vh solid rgba(255, 255, 255, 0.6);
+  border-radius: 2px;
+  color: #fff;
+  font-family: "Exo", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 4px;
+  margin-top: 10px;
+}
+
 .login input[type="button"] {
   width: 260px;
   height: 35px;
@@ -332,6 +360,11 @@ body {
 }
 
 .login input[type="password"]:focus {
+  outline: none;
+  border: .4vh solid rgba(255, 255, 255, 0.9);
+}
+
+.login input[type="file"]:focus {
   outline: none;
   border: .4vh solid rgba(255, 255, 255, 0.9);
 }
