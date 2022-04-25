@@ -24,42 +24,59 @@ class App extends React.Component {
           {
             user: "Shir",
             type: "text",
-            content: "Hi :)"
+            content: "Hi :)",
+            timeStamp: new Date (
+              2022,4,20,14,30).toDateString()
           },
           {
             user: "Reut",
             type: "text",
-            content: "Hi :)"
+            content: "Hi :)",
+            timeStamp: new Date (
+              2022,4,20,14,31).toDateString()
           },
           {
             user: "Reut",
             type: "text",
-            content: "What's up?"
+            content: "What's up?",
+            timeStamp: new Date (
+              2022,4,20,14,32).toDateString()
           },
           {
             user: "Shir",
             type: "text",
-            content: "I'm good, doing Pesah homework"
+            content: "I'm good, doing Pesah homework",
+            timeStamp: new Date (
+              2022,4,20,14,33).toDateString()
           },
           {
             user: "Shir",
             type: "text",
-            content: "You?"
+            content: "You?",
+            timeStamp: new Date (
+              2022,4,20,14,33).toDateString()
+
           },
           {
             user: "Reut",
             type: "text",
-            content: "I'm great, doing homework too"
+            content: "I'm great, doing homework too",
+            timeStamp: new Date (
+              2022,4,20,14,35).toDateString()
           },
           {
             user: "Shir",
             type: "text",
-            content: "Good luckk I hope we'll both finish soon"
+            content: "Good luckk I hope we'll both finish soon",
+            timeStamp: new Date (
+              2022,4,20,14,36).toDateString()
           },
           {
             user: "Reut",
             type: "text",
-            content: "Yeah me too!"
+            content: "Yeah me too!",
+            timeStamp: new Date (
+              2022,4,20,14,37).toDateString()
           },
         ]
       },
@@ -70,32 +87,44 @@ class App extends React.Component {
           {
             user: "Aviad",
             type: "text",
-            content: "Hi Shir,how's it going?"
+            content: "Hi Shir,how's it going?",
+            timeStamp: new Date (
+              2022,4,22,16,31).toDateString()
           },
           {
             user: "Shir",
             type: "text",
-            content: "I'm great, how are you?"
+            content: "I'm great, how are you?",
+            timeStamp: new Date (
+              2022,4,22,17,31).toDateString()
           },
           {
             user: "Aviad",
             type: "text",
-            content: "Awsome, can you help me with something in github?"
+            content: "Awsome, can you help me with something in github?",
+            timeStamp: new Date (
+              2022,4,22,17,32).toDateString()
           },
           {
             user: "Shir",
             type: "text",
-            content: "Sure! what do you need?"
+            content: "Sure! what do you need?",
+            timeStamp: new Date (
+              2022,4,22,17,33).toDateString()
           },
           {
             user: "Aviad",
             type: "text",
-            content: "I'm trying to solve a conflict in merging to dev"
+            content: "I'm trying to solve a conflict in merging to dev",
+            timeStamp: new Date (
+              2022,4,22,17,34).toDateString()
           },
           {
             user: "Shir",
             type: "text",
-            content: "Ok, I'll go check it now"
+            content: "Ok, I'll go check it now",
+            timeStamp: new Date (
+              2022,4,22,17,35).toDateString()
           },
         ]
       }],
@@ -104,11 +133,11 @@ class App extends React.Component {
     this.addMessage = this.addMessage.bind(this)
   }
 
-  componentDidMount = () => {
-    this.setState({
-      online: this.state.users[0]
-    })
-  }
+  // componentDidMount = () => {
+  //   this.setState({
+  //     online: this.state.users[0]
+  //   })
+  // }
 
 
   // add message to the array of messages to the right conversation.
