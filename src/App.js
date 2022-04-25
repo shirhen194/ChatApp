@@ -11,6 +11,8 @@ class App extends React.Component {
     this.state = {
       users: [{ userName: "Shir1", password: "a123", displayName: "Shir", pic: "cat_shir.jpg", contacts: ["Aviad", "Reut"] },
       { userName: "Aviad1", password: "a123", displayName: "Aviad", pic: "cat_aviad.jpg", contacts: ["Shir"] },
+      { userName: "Daniel1", password: "a123", displayName: "Daniel", pic: "cat_daniel.jpeg", contacts: ["Reut", "Sam"] },
+      { userName: "Sam1", password: "a123", displayName: "Sam", pic: "cat_sam.jpeg", contacts: ["Daniel"] },
       { userName: "Reut1", password: "a123", displayName: "Reut", pic: "cat_reut.jpg", contacts: ["Shir"] }],
       conversations: [{
         users: ["", ""],
@@ -96,6 +98,93 @@ class App extends React.Component {
             user: "Shir",
             type: "text",
             content: "Ok, I'll go check it now"
+          },
+        ]
+      },
+      {
+        users: ["Daniel1", "Reut1"],
+        id: 3,
+        messages: [
+          {
+            user: "Daniel",
+            type: "text",
+            content: "Hi :)",
+            timeStamp: new Date (
+              2022,4,22,18,10).toDateString()
+          },
+          {
+            user: "Reut",
+            type: "text",
+            content: "Hi :)"
+          },
+          {
+            user: "Reut",
+            type: "text",
+            content: "What's up?",
+            timeStamp: new Date (
+              2022,4,22,18,13).toDateString()
+          },
+          {
+            user: "Daniel",
+            type: "text",
+            content: "all good",
+            timeStamp: new Date (
+              2022,4,22,18,15).toDateString()
+          },
+          {
+            user: "Daniel",
+            type: "text",
+            content: "how are you?",
+            timeStamp: new Date (
+              2022,4,22,18,15).toDateString()
+          },
+          {
+            user: "Reut",
+            type: "text",
+            content: "I'm great, thanks for asking",
+            timeStamp: new Date (
+              2022,4,22,18,16).toDateString()
+          },
+        ]
+      },
+      {
+        users: ["Sam1", "Daniel1"],
+        id: 4,
+        messages: [
+          {
+            user: "Sam",
+            type: "text",
+            content: "Hey man",
+            timeStamp: new Date (
+              2022,4,25,6,42).toDateString()
+          },
+          {
+            user: "Sam",
+            type: "text",
+            content: "I think you and I are just Bots",
+            timeStamp: new Date (
+              2022,4,25,6,43).toDateString()
+          },
+          {
+            user: "Daniel",
+            type: "text",
+            content: "I can't believe it!",
+            timeStamp: new Date (
+              2022,4,25,6,46).toDateString()
+          },
+          {
+            user: "Sam",
+            type: "text",
+            content: "Well, better start finding another job",
+            timeStamp: new Date (
+              2022,4,25,6,48).toDateString()
+          },
+          {
+            user: "Daniel",
+            type: "text",
+            content: "Know anyone looking to buy instagram followers?",
+            timeStamp: new Date (
+              2022,4,25,6,53).toDateString()
           },
         ]
       }],
