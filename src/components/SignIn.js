@@ -1,13 +1,7 @@
 import '../App.css';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom'
 import { useRef, useState } from 'react'
-import { propTypes } from 'react-bootstrap/esm/Image';
-
-// import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 
 function SignIn(props) {
 
@@ -64,11 +58,7 @@ function SignIn(props) {
   }
 
   const handleSubmit = e => {
-    for (var i = 0; i < (props.users).length; i++) {
-      console.log(props.users[i])
-    }
     const newErrors = findMatch()
-    console.log(Object.keys(newErrors))
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors)
     } else {

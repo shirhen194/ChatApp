@@ -77,6 +77,8 @@
 .chat-flow {
   flex-grow: 3;
   background-color: aliceblue;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .message-input {
@@ -173,6 +175,7 @@
   font-size: 1rem;
   transition: all .15s ease-in-out;
   line-height: 1.1rem;
+  margin:0.5vw;
 }
 
 .convo-btn:hover {
@@ -300,6 +303,34 @@ body {
   margin-top: 10px;
 }
 
+.login input[type="file"] {
+  width: 250px;
+  height: 30px;
+  background: transparent;
+  border: .3vh solid rgba(255, 255, 255, 0.6);
+  border-radius: 2px;
+  color: #fff;
+  font-family: "Exo", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 4px;
+  margin-top: 10px;
+}
+
+.login input[type="displayName"] {
+  width: 250px;
+  height: 30px;
+  background: transparent;
+  border: .3vh solid rgba(255, 255, 255, 0.6);
+  border-radius: 2px;
+  color: #fff;
+  font-family: "Exo", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 4px;
+  margin-top: 10px;
+}
+
 .login input[type="button"] {
   width: 260px;
   height: 35px;
@@ -333,6 +364,11 @@ body {
   border: .4vh solid rgba(255, 255, 255, 0.9);
 }
 
+.login input[type="file"]:focus {
+  outline: none;
+  border: .4vh solid rgba(255, 255, 255, 0.9);
+}
+
 .login input[type="button"]:focus {
   outline: none;
 }
@@ -361,9 +397,8 @@ body {
   text-align: center;
   text-shadow:#282c34 ;
   font-size: xx-large;
-  display: inline-block
-  
-
+  display: inline-block;
+  width: 100%;
 }
 
 .chat_heder{
@@ -376,21 +411,94 @@ body {
   background-color: rgba(132, 178, 248, 0.822);
   width:fit-content;
   height:fit-content;
+  margin-left: auto;
+  border-radius: calc(.7rem - 1px);
+  word-wrap: break-word;
+  max-width: 52vh;
 }
 
 .RightMessage{
   color:#282c34;
   text-align: center;
+  padding:0.8vw;
 }
 
 .LeftMessageWraper{
   background-color:rgb(203, 239, 241);
   width:fit-content;
   height:fit-content;
-
+  border-radius: calc(.7rem - 1px);
+  word-wrap: break-word;
+  max-width: 52vh;
 }
 
 .LeftMessage{
   color:#225aca;
   text-align: center;
+  padding:0.8vw;
+}
+
+.audio-wrap{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rec-button{
+  border: none;
+  background: none;
+  width: 5vh;
+  height: 5vh;
+  border-radius: 50%;
+  padding: 0;
+  margin: 1vh;
+}
+
+.rec-button > img{
+  width: 3.5vh;
+  height: 3.5vh;
+  margin:0;
+  transition: all .15s ease-in-out;
+}
+
+.rec-button > img:hover {
+  cursor: pointer;
+  transform: scale(1.25);
+}
+
+.blink{
+  animation: blinkingBackground 2s infinite;
+}
+
+
+@keyframes blinkingBackground{
+  0%		{ background-color: #ffffff00;}
+  50%		{ background-color: #e72734db;}
+  100%		{ background-color: #ffffff00;}
+}
+
+.hide-rec{
+  display: none;
+}
+
+.show-rec{
+  display: block;
+}
+
+
+.image-wrap{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-img{
+  width: 5vh;
+  height: 5vh;
+  transition: all .15s ease-in-out;
+}
+
+.remove-img:hover{
+  cursor: pointer;
+  transform: scale(1.25);
 }
