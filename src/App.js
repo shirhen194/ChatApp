@@ -25,8 +25,8 @@ class App extends React.Component {
         messages: [
           {
             user: "Shir",
-            type: "text",
-            content: "Hi :)",
+            type: "img",
+            content: "hello.jpg",
             timeStamp: new Date (
               2022,4,20,14,30).toDateString()
           },
@@ -69,16 +69,30 @@ class App extends React.Component {
           {
             user: "Shir",
             type: "text",
-            content: "Good luckk I hope we'll both finish soon",
+            content: "Good for you, i'm watching cat videos",
             timeStamp: new Date (
               2022,4,20,14,36).toDateString()
           },
           {
+            user: "Shir",
+            type: "recording",
+            content: "please-take-your-seats.mp3",
+            timeStamp: new Date (
+              2022,4,20,14,53).toDateString()
+          },
+          {
+            user: "Shir",
+            type: "video",
+            content: "pianoCat.mp4",
+            timeStamp: new Date (
+              2022,4,20,14,54).toDateString()
+          },
+          {
             user: "Reut",
             type: "text",
-            content: "Yeah me too!",
+            content: "wow! so sweet!",
             timeStamp: new Date (
-              2022,4,20,14,37).toDateString()
+              2022,4,20,14,59).toDateString()
           },
         ]
       },
@@ -122,11 +136,25 @@ class App extends React.Component {
               2022,4,22,17,34).toDateString()
           },
           {
+            user: "Aviad",
+            type: "video",
+            content: "gitConflict.mp4",
+            timeStamp: new Date (
+              2022,4,22,17,34).toDateString()
+          },
+          {
             user: "Shir",
             type: "text",
             content: "Ok, I'll go check it now",
             timeStamp: new Date (
               2022,4,22,17,35).toDateString()
+          },
+          {
+            user: "Aviad",
+            type: "recording",
+            content: "thank-you.mp3",
+            timeStamp: new Date (
+              2022,4,22,17,37).toDateString()
           },
         ]
       },
@@ -144,7 +172,9 @@ class App extends React.Component {
           {
             user: "Reut",
             type: "text",
-            content: "Hi :)"
+            content: "Hi :)",
+            timeStamp: new Date (
+              2022,4,22,18,11).toDateString()
           },
           {
             user: "Reut",
@@ -174,6 +204,20 @@ class App extends React.Component {
             timeStamp: new Date (
               2022,4,22,18,16).toDateString()
           },
+          {
+            user: "Daniel",
+            type: "text",
+            content: "Check out this new cat!",
+            timeStamp: new Date (
+              2022,4,22,18,16).toDateString()
+          },
+          {
+            user: "Reut",
+            type: "img",
+            content: "chatCat.jpg",
+            timeStamp: new Date (
+              2022,4,22,18,16).toDateString()
+          },
         ]
       },
       {
@@ -195,6 +239,13 @@ class App extends React.Component {
               2022,4,25,6,43).toDateString()
           },
           {
+            user: "Sam",
+            type: "img",
+            content: "robots.jpg",
+            timeStamp: new Date (
+              2022,4,25,6,44).toDateString()
+          },
+          {
             user: "Daniel",
             type: "text",
             content: "I can't believe it!",
@@ -212,6 +263,13 @@ class App extends React.Component {
             user: "Daniel",
             type: "text",
             content: "Know anyone looking to buy instagram followers?",
+            timeStamp: new Date (
+              2022,4,25,6,53).toDateString()
+          },
+          {
+            user: "Daniel",
+            type: "recording",
+            content: "laugh.mp3",
             timeStamp: new Date (
               2022,4,25,6,53).toDateString()
           },
