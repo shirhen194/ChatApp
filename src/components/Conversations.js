@@ -111,7 +111,7 @@ function Conversations(props, changeConversationId) {
             {cf.messages.length > 0 && cf.messages.at(-1).type === 'video' && <div id="convo-last-message">video</div>}
             {cf.messages.length > 0 && cf.messages.at(-1).type === 'recording' && <div id="convo-last-message">voice recording</div>}
             {cf.messages.length > 0 && cf.messages.at(-1).type === 'img' && <div id="convo-last-message">image</div>}
-            {cf.messages.at(-1).timeStamp && <div id="convo-last-message">{cf.messages.at(-1).timeStamp}</div>}
+            {cf.messages.length > 0 && <div id="convo-last-message">{cf.messages.at(-1).timeStamp}</div>}
             </div>
           </div>
         </div>
@@ -121,3 +121,6 @@ function Conversations(props, changeConversationId) {
 }
 
 export default Conversations;
+/**
+ * {cf.messages.at(-1).timeStamp && <div id="convo-last-message">{cf.messages.at(-1).timeStamp}</div>}
+ */
