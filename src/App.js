@@ -212,7 +212,7 @@ class App extends React.Component {
               2022,4,22,18,16).toDateString()
           },
           {
-            user: "Reut",
+            user: "Daniel",
             type: "img",
             content: "chatCat.jpg",
             timeStamp: new Date (
@@ -303,7 +303,7 @@ class App extends React.Component {
       type: type, content: message,
       timeStamp: dateWithootYear + " " + timeWithootSeconds
     }
-    if (c_index !== -1) {
+    if (c_index !== -1 && new_message.content !== '') {
       let updated_conversation = {
         ...conversations[c_index],
         messages: [...conversations[c_index].messages, new_message]
