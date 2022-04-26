@@ -1,5 +1,5 @@
 import '../App.css';
-
+import {useRef, useEffect} from 'react'
 
 function LeftMessage(props) {
     if (props.type === "recording") {
@@ -68,9 +68,16 @@ function Messages(props) {
             return <LeftMessage key={key} content={content} type={type} timeStamp={timeStamp} />
     }
 
+    const messagesEndRef = useRef(null);
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+  useEffect(scrollToBottom, [props.conversations[props.conversation_id].Messages]);
+
     return (
         <div>
             {props.conversations[current_conversation_index].messages.map(({ user, type, content, timeStamp }, index) => createMessage(props.self, user, content, index, type, timeStamp))}
+            <div ref={messagesEndRef} />
         </div>
 
     );
