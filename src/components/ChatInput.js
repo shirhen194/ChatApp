@@ -22,7 +22,7 @@ function ChatInput(props) {
             className="me-auto"
             placeholder="Type your message here..."
             onKeyPress={(e) => {
-              if (e.key === 'Enter' && message.current.value !== '') {
+              if (e.key === 'Enter' ) {
                 props.addMessage(message.current.value, props.conversation_id, 'text')
                 message.current.value = ""
               }

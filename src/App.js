@@ -11,6 +11,8 @@ class App extends React.Component {
     this.state = {
       users: [{ userName: "Shir1", password: "a123", displayName: "Shir", pic: "cat_shir.jpg", contacts: ["Aviad", "Reut"] },
       { userName: "Aviad1", password: "a123", displayName: "Aviad", pic: "cat_aviad.jpg", contacts: ["Shir"] },
+      { userName: "Daniel1", password: "a123", displayName: "Daniel", pic: "cat_daniel.jpeg", contacts: ["Reut", "Sam"] },
+      { userName: "Sam1", password: "a123", displayName: "Sam", pic: "cat_sam.jpeg", contacts: ["Daniel"] },
       { userName: "Reut1", password: "a123", displayName: "Reut", pic: "cat_reut.jpg", contacts: ["Shir"] }],
       conversations: [{
         users: ["", ""],
@@ -23,8 +25,8 @@ class App extends React.Component {
         messages: [
           {
             user: "Shir",
-            type: "text",
-            content: "Hi :)",
+            type: "img",
+            content: "hello.jpg",
             timeStamp: new Date (
               2022,4,20,14,30).toDateString()
           },
@@ -67,16 +69,30 @@ class App extends React.Component {
           {
             user: "Shir",
             type: "text",
-            content: "Good luckk I hope we'll both finish soon",
+            content: "Good for you, i'm watching cat videos",
             timeStamp: new Date (
               2022,4,20,14,36).toDateString()
           },
           {
+            user: "Shir",
+            type: "recording",
+            content: "please-take-your-seats.mp3",
+            timeStamp: new Date (
+              2022,4,20,14,53).toDateString()
+          },
+          {
+            user: "Shir",
+            type: "video",
+            content: "pianoCat.mp4",
+            timeStamp: new Date (
+              2022,4,20,14,54).toDateString()
+          },
+          {
             user: "Reut",
             type: "text",
-            content: "Yeah me too!",
+            content: "wow! so sweet!",
             timeStamp: new Date (
-              2022,4,20,14,37).toDateString()
+              2022,4,20,14,59).toDateString()
           },
         ]
       },
@@ -120,11 +136,142 @@ class App extends React.Component {
               2022,4,22,17,34).toDateString()
           },
           {
+            user: "Aviad",
+            type: "video",
+            content: "gitConflict.mp4",
+            timeStamp: new Date (
+              2022,4,22,17,34).toDateString()
+          },
+          {
             user: "Shir",
             type: "text",
             content: "Ok, I'll go check it now",
             timeStamp: new Date (
               2022,4,22,17,35).toDateString()
+          },
+          {
+            user: "Aviad",
+            type: "recording",
+            content: "thank-you.mp3",
+            timeStamp: new Date (
+              2022,4,22,17,37).toDateString()
+          },
+        ]
+      },
+      {
+        users: ["Daniel1", "Reut1"],
+        id: 3,
+        messages: [
+          {
+            user: "Daniel",
+            type: "text",
+            content: "Hi :)",
+            timeStamp: new Date (
+              2022,4,22,18,10).toDateString()
+          },
+          {
+            user: "Reut",
+            type: "text",
+            content: "Hi :)",
+            timeStamp: new Date (
+              2022,4,22,18,11).toDateString()
+          },
+          {
+            user: "Reut",
+            type: "text",
+            content: "What's up?",
+            timeStamp: new Date (
+              2022,4,22,18,13).toDateString()
+          },
+          {
+            user: "Daniel",
+            type: "text",
+            content: "all good",
+            timeStamp: new Date (
+              2022,4,22,18,15).toDateString()
+          },
+          {
+            user: "Daniel",
+            type: "text",
+            content: "how are you?",
+            timeStamp: new Date (
+              2022,4,22,18,15).toDateString()
+          },
+          {
+            user: "Reut",
+            type: "text",
+            content: "I'm great, thanks for asking",
+            timeStamp: new Date (
+              2022,4,22,18,16).toDateString()
+          },
+          {
+            user: "Daniel",
+            type: "text",
+            content: "Check out this new cat!",
+            timeStamp: new Date (
+              2022,4,22,18,16).toDateString()
+          },
+          {
+            user: "Daniel",
+            type: "img",
+            content: "chatCat.jpg",
+            timeStamp: new Date (
+              2022,4,22,18,16).toDateString()
+          },
+        ]
+      },
+      {
+        users: ["Sam1", "Daniel1"],
+        id: 4,
+        messages: [
+          {
+            user: "Sam",
+            type: "text",
+            content: "Hey man",
+            timeStamp: new Date (
+              2022,4,25,6,42).toDateString()
+          },
+          {
+            user: "Sam",
+            type: "text",
+            content: "I think you and I are just Bots",
+            timeStamp: new Date (
+              2022,4,25,6,43).toDateString()
+          },
+          {
+            user: "Sam",
+            type: "img",
+            content: "robots.jpg",
+            timeStamp: new Date (
+              2022,4,25,6,44).toDateString()
+          },
+          {
+            user: "Daniel",
+            type: "text",
+            content: "I can't believe it!",
+            timeStamp: new Date (
+              2022,4,25,6,46).toDateString()
+          },
+          {
+            user: "Sam",
+            type: "text",
+            content: "Well, better start finding another job",
+            timeStamp: new Date (
+              2022,4,25,6,48).toDateString()
+          },
+          {
+            user: "Daniel",
+            type: "text",
+            content: "Know anyone looking to buy instagram followers?",
+            timeStamp: new Date (
+              2022,4,25,6,53).toDateString()
+          },
+          {
+            user: "Daniel",
+            type: "recording",
+            content: "laugh.mp3",
+            timeStamp: new Date (
+              2022,4,25,6,53).toDateString()
           },
         ]
       }],
@@ -146,7 +293,7 @@ class App extends React.Component {
     //TODO: add user information to new message
     //time and date stamp
     let timeStamp = new Date().toLocaleTimeString()
-    let timeWithootSeconds = timeStamp.substring(0, timeStamp.length - 3)
+    let timeWithootSeconds = timeStamp.substring(0, timeStamp.length - 6)
     let dateStamp = new Date().toLocaleDateString()
     let dateWithootYear = dateStamp.substring(0, dateStamp.length - 5)
     let c_index = c_id;
@@ -156,7 +303,7 @@ class App extends React.Component {
       type: type, content: message,
       timeStamp: dateWithootYear + " " + timeWithootSeconds
     }
-    if (c_index !== -1) {
+    if (c_index !== -1 && new_message.content !== '') {
       let updated_conversation = {
         ...conversations[c_index],
         messages: [...conversations[c_index].messages, new_message]
