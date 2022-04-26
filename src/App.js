@@ -235,7 +235,7 @@ class App extends React.Component {
     //TODO: add user information to new message
     //time and date stamp
     let timeStamp = new Date().toLocaleTimeString()
-    let timeWithootSeconds = timeStamp.substring(0, timeStamp.length - 3)
+    let timeWithootSeconds = timeStamp.substring(0, timeStamp.length - 6)
     let dateStamp = new Date().toLocaleDateString()
     let dateWithootYear = dateStamp.substring(0, dateStamp.length - 5)
     let c_index = c_id;
