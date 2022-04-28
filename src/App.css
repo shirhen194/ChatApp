@@ -113,7 +113,8 @@
 
 .message-input {
   display: flex;
-  height: 35%;
+  max-height: 12vh;
+  min-height: 12vh;
   background-color: aquamarine;
   justify-content: center;
   align-items: center;
@@ -156,6 +157,8 @@
   width: 95%;
   box-shadow: 0 2vh 4vh 0 rgba(0, 0, 0, 0.2);
   transition: all .15s ease-in-out;
+  font-family: 'Roboto', sans-serif;
+  color: #013b3b;
 }
 
 .convo:hover {
@@ -224,6 +227,9 @@
   font-size: 1rem;
   margin: 0.05vw;
   border-bottom: 1px solid #057672;
+  width: 100%;
+  text-align: center;
+  padding-top: 0.5vh;
 }
 
 #convo-last-message {

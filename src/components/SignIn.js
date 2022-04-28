@@ -84,6 +84,7 @@ function SignIn(props) {
         <input type="password" placeholder="Password" name="password"
           ref={password}
           onChange={e => setField('password', e.target.value)}
+          onKeyDown={ e => e.key === 'Enter' ? handleSubmit(findMatch()) : null }
           /><br />
         <div className="error" style={{ color: 'red' }}>{errors.password}</div>
         <div className="remember-checkbox">
