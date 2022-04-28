@@ -1,5 +1,6 @@
 import '../App.css';
 import { useRef, useEffect } from 'react'
+import React from 'react';
 
 function LeftMessage(props) {
     if (props.type === "recording") {
@@ -57,7 +58,7 @@ function RightMessage(props) {
     }
 }
 
-function Messages(props) {
+const Messages = React.forwardRef((props, ref) => {
     const c_id = (element) => element.id == props.conversation_id;
     const current_conversation_index = props.conversations.findIndex(c_id);
 
@@ -69,19 +70,19 @@ function Messages(props) {
     }
 
     const messages = props.conversations[current_conversation_index].messages;
-    const messagesEndRef = useRef(null);
+    const {messagesEndRef} = props;
     const scrollToBottom = () => {
         messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     };
-    useEffect(scrollToBottom, [messages]);
+    useEffect(scrollToBottom, [messages, messagesEndRef]);
 
     return (
         <div>
             {props.conversations[current_conversation_index].messages.map(({ user, type, content, timeStamp }, index) => createMessage(props.self, user, content, index, type, timeStamp))}
-            <div ref={messagesEndRef} />
+            <div ref={messagesEndRef} style={{height: '8px'}} />
         </div>
 
     );
 
-}
+})
 export default Messages;

@@ -21,8 +21,70 @@ class App extends React.Component {
         messages: []
       },
       {
-        users: ["Shir1", "Reut1"],
+        users: ["Aviad1", "Shir1"],
         id: 1,
+        messages: [
+          {
+            user: "Aviad",
+            type: "text",
+            content: "Hi Shir,how's it going?",
+            timeStamp: new Date(
+              2022, 4, 22, 16, 31).toDateString()
+          },
+          {
+            user: "Shir",
+            type: "text",
+            content: "I'm great, how are you?",
+            timeStamp: new Date(
+              2022, 4, 22, 17, 31).toDateString()
+          },
+          {
+            user: "Aviad",
+            type: "text",
+            content: "Awsome, can you help me with something in github?",
+            timeStamp: new Date(
+              2022, 4, 22, 17, 32).toDateString()
+          },
+          {
+            user: "Shir",
+            type: "text",
+            content: "Sure! what do you need?",
+            timeStamp: new Date(
+              2022, 4, 22, 17, 33).toDateString()
+          },
+          {
+            user: "Aviad",
+            type: "text",
+            content: "I'm trying to solve a conflict in merging to dev",
+            timeStamp: new Date(
+              2022, 4, 22, 17, 34).toDateString()
+          },
+          {
+            user: "Aviad",
+            type: "video",
+            content: "gitConflict.mp4",
+            timeStamp: new Date(
+              2022, 4, 22, 17, 34).toDateString()
+          },
+          {
+            user: "Shir",
+            type: "text",
+            content: "Ok, I'll go check it now",
+            timeStamp: new Date(
+              2022, 4, 22, 17, 35).toDateString()
+          },
+          {
+            user: "Aviad",
+            type: "recording",
+            content: "thank-you.mp3",
+            timeStamp: new Date(
+              2022, 4, 22, 17, 37).toDateString()
+          },
+        ]
+      },
+      {
+        users: ["Shir1", "Reut1"],
+        id: 2,
         messages: [
           {
             user: "Shir",
@@ -82,9 +144,16 @@ class App extends React.Component {
               2022, 4, 20, 14, 53).toDateString()
           },
           {
+            user: "Reut",
+            type: "text",
+            content: "send me a happy birthday video please!",
+            timeStamp: new Date(
+              2022, 4, 20, 14, 53).toDateString()
+          },
+          {
             user: "Shir",
             type: "video",
-            content: "pianoCat.mp4",
+            content: "happyBirthday.mp4",
             timeStamp: new Date(
               2022, 4, 20, 14, 54).toDateString()
           },
@@ -94,68 +163,6 @@ class App extends React.Component {
             content: "wow! so sweet!",
             timeStamp: new Date(
               2022, 4, 20, 14, 59).toDateString()
-          },
-        ]
-      },
-      {
-        users: ["Aviad1", "Shir1"],
-        id: 2,
-        messages: [
-          {
-            user: "Aviad",
-            type: "text",
-            content: "Hi Shir,how's it going?",
-            timeStamp: new Date(
-              2022, 4, 22, 16, 31).toDateString()
-          },
-          {
-            user: "Shir",
-            type: "text",
-            content: "I'm great, how are you?",
-            timeStamp: new Date(
-              2022, 4, 22, 17, 31).toDateString()
-          },
-          {
-            user: "Aviad",
-            type: "text",
-            content: "Awsome, can you help me with something in github?",
-            timeStamp: new Date(
-              2022, 4, 22, 17, 32).toDateString()
-          },
-          {
-            user: "Shir",
-            type: "text",
-            content: "Sure! what do you need?",
-            timeStamp: new Date(
-              2022, 4, 22, 17, 33).toDateString()
-          },
-          {
-            user: "Aviad",
-            type: "text",
-            content: "I'm trying to solve a conflict in merging to dev",
-            timeStamp: new Date(
-              2022, 4, 22, 17, 34).toDateString()
-          },
-          {
-            user: "Aviad",
-            type: "video",
-            content: "gitConflict.mp4",
-            timeStamp: new Date(
-              2022, 4, 22, 17, 34).toDateString()
-          },
-          {
-            user: "Shir",
-            type: "text",
-            content: "Ok, I'll go check it now",
-            timeStamp: new Date(
-              2022, 4, 22, 17, 35).toDateString()
-          },
-          {
-            user: "Aviad",
-            type: "recording",
-            content: "thank-you.mp3",
-            timeStamp: new Date(
-              2022, 4, 22, 17, 37).toDateString()
           },
         ]
       },
@@ -278,7 +285,7 @@ class App extends React.Component {
       },
       {
         users: ["Shir1", "Sam1"],
-        id: 1,
+        id: 5,
         messages: [
           {
             user: "Shir",
@@ -355,7 +362,7 @@ class App extends React.Component {
       },
       {
         users: ["Shir1", "Daniel1"],
-        id: 4,
+        id: 6,
         messages: [
           {
             user: "Shir",
@@ -410,7 +417,7 @@ class App extends React.Component {
       },
       {
         users: ["Shir1", "Dana1"],
-        id: 1,
+        id: 7,
         messages: [
           {
             user: "Shir",

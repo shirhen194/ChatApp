@@ -13,7 +13,7 @@ function ChatInput(props) {
   //   setInput(()=>"")
   // }
 
-  let { modals } = props;
+  let { modals, scrollToBottom } = props;
   return (
     <div className='message-input'>
       <>
@@ -25,6 +25,7 @@ function ChatInput(props) {
               if (e.key === 'Enter' ) {
                 props.addMessage(message.current.value, props.conversation_id, 'text')
                 message.current.value = ""
+                scrollToBottom()
               }
             }}
           />
@@ -32,6 +33,7 @@ function ChatInput(props) {
             onClick={() => {
               props.addMessage(message.current.value, props.conversation_id, 'text')
               message.current.value = ""
+              scrollToBottom()
             }}
           >Send</Button>
           <div className="vr" />
