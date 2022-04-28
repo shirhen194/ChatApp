@@ -63,8 +63,9 @@
 }
 
 .conversations {
-  width: 30vw;
+  width: 34vw;
   background-color: cadetblue;
+  overflow-y: auto;
 }
 
 .chat-wrapper {
@@ -84,7 +85,7 @@
 
 .message-input {
   display: flex;
-  height: 15vh;
+  height: 35%;
   background-color: aquamarine;
   justify-content: center;
   align-items: center;
@@ -418,6 +419,7 @@ body {
   border-radius: calc(.7rem - 1px);
   word-wrap: break-word;
   max-width: 52vh;
+  margin-right: 1vw;
 }
 
 .RightMessage{
@@ -440,6 +442,7 @@ body {
   border-radius: calc(.7rem - 1px);
   word-wrap: break-word;
   max-width: 52vh;
+  margin-left: 1vw;
 }
 
 .LeftMessage{

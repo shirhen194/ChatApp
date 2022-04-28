@@ -5,14 +5,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal } from 'react-bootstrap';
 import { useEffect, useState } from "react";
 
-async function requestRecorder() {
-  const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-  return new MediaRecorder(stream);
-}
+
 
 function ModalInput(props) {
   let { handleClose, addMessage, rec, pic, vid, c_id, type } = props;
-
+  async function getRec() {
+    return new MediaRecorder(await navigator.mediaDevices.getUserMedia({audio: true}))
+  }
+  
   const [nowRecording, setNowRecording] = useState(false);
   const [audio, setShowAudio] = useState("hide-rec");
   const [blink, setBlink] = useState("");
@@ -23,9 +23,9 @@ function ModalInput(props) {
   useEffect(() => {
     if (audioRec === null) {
       if (nowRecording) {
-        requestRecorder().then(setAudioRec, console.error);
+        getRec().then(setAudioRec, console.error);
       }
-      return;
+      return
     }
 
     if (nowRecording) {
@@ -36,13 +36,13 @@ function ModalInput(props) {
       audioRec.stop();
     }
 
-    const handleData = e => {
+    const afterStrartRecording = e => {
       setContent(URL.createObjectURL(e.data));
       setShowAudio("show-rec")
-    };
+    }
 
-    audioRec.addEventListener("dataavailable", handleData);
-    return () => audioRec.removeEventListener("dataavailable", handleData);
+    audioRec.addEventListener("dataavailable", afterStrartRecording)
+    return () => audioRec.removeEventListener("dataavailable", afterStrartRecording)
   }, [audioRec, nowRecording]);
 
   return (

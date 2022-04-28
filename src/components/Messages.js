@@ -1,5 +1,5 @@
 import '../App.css';
-import {useRef, useEffect} from 'react'
+import { useRef, useEffect } from 'react'
 
 function LeftMessage(props) {
     if (props.type === "recording") {
@@ -14,9 +14,9 @@ function LeftMessage(props) {
         </div>
         )
     }
-    else if(props.type === "video"){
+    else if (props.type === "video") {
         return (<div className="LeftMessageWraper">
-            <ul className='LeftMessage'> <video src={props.content} alt="vid" style={{ width: '50vh'}} controls /></ul>
+            <ul className='LeftMessage'> <video src={props.content} alt="vid" style={{ width: '50vh' }} controls /></ul>
             <ul className='LeftMessage_timeStamp'> {props.timeStamp} </ul>
         </div>
         )
@@ -38,13 +38,13 @@ function RightMessage(props) {
         </div>);
     } else if (props.type === "img") {
         return (<div className="RightMessageWraper">
-            <ul className='RightMessage'> <img src={props.content} style={{ width: '20vh', height: '20vh' }}alt="img" /></ul>
+            <ul className='RightMessage'> <img src={props.content} style={{ width: '20vh', height: '20vh' }} alt="img" /></ul>
             <ul className='RightMessage_timeStamp'> {props.timeStamp} </ul>
         </div>
         )
     } else if (props.type === "video") {
         return (<div className="RightMessageWraper">
-            <ul className='RightMessage'> <video src={props.content} alt="vid" style={{ width: '50vh'}} controls/></ul>
+            <ul className='RightMessage'> <video src={props.content} alt="vid" style={{ width: '50vh' }} controls /></ul>
             <ul className='RightMessage_timeStamp'> {props.timeStamp} </ul>
         </div>
         )
@@ -68,11 +68,12 @@ function Messages(props) {
             return <LeftMessage key={key} content={content} type={type} timeStamp={timeStamp} />
     }
 
+    const messages = props.conversations[current_conversation_index].messages;
     const messagesEndRef = useRef(null);
-  const scrollToBottom = () => {
-    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-  };
-  useEffect(scrollToBottom, [props.conversations[props.conversation_id].Messages]);
+    const scrollToBottom = () => {
+        messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    };
+    useEffect(scrollToBottom, [messages]);
 
     return (
         <div>
