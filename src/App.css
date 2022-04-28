@@ -63,8 +63,9 @@
 }
 
 .conversations {
-  width: 30vw;
+  width: 34vw;
   background-color: cadetblue;
+  overflow-y: auto;
 }
 
 .chat-wrapper {
@@ -78,12 +79,13 @@
   flex-grow: 3;
   background-color: aliceblue;
   overflow: scroll;
+  scroll-behavior: smooth;
   overflow-x: hidden;
 }
 
 .message-input {
   display: flex;
-  height: 15vh;
+  height: 35%;
   background-color: aquamarine;
   justify-content: center;
   align-items: center;
@@ -157,7 +159,7 @@
   align-items: center;
   height: 17vh;
   width: 80%;
-  text-align: left;
+  text-align: start;
   border-left: .1vh solid #057672;
 }
 
@@ -186,17 +188,16 @@
 
 #convo-name {
   font-size: 1rem;
-  width: 100%;
-  margin: 0.5vw;
+  margin: 0.05vw;
   border-bottom: 1px solid #057672;
-  padding-left: 1vw;
 }
 
 #convo-last-message {
   text-align: left;
-  font-size: .8rem;
+  font-size: 1rem;
   width: 100%;
   padding-left: 1vw;
+  padding-bottom: 0.2vw;
 }
 
 
@@ -393,18 +394,21 @@ body {
 
 
 .empty-conversation{
-  background-color: #d6c8fc;
   text-align: center;
-  text-shadow:#282c34 ;
+  text-shadow:1vh;
   font-size: xx-large;
   display: inline-block;
   width: 100%;
+  background-color: aliceblue;
 }
 
 .chat_heder{
-  background-color: #936dfa;
-  text-align: center;
+  background-color:rgb(151, 165, 192);
+  text-align: left;
   font-size: large;
+  padding:1vh;
+  border-bottom: 1hv;
+
 }
 
 .RightMessageWraper{
@@ -415,12 +419,20 @@ body {
   border-radius: calc(.7rem - 1px);
   word-wrap: break-word;
   max-width: 52vh;
+  margin-right: 1vw;
 }
 
 .RightMessage{
   color:#282c34;
   text-align: center;
   padding:0.8vw;
+}
+
+.RightMessage_timeStamp{
+  color:#282c34;
+  text-align: left;
+  padding:0.3vw;
+  font-size: 1.5vh;
 }
 
 .LeftMessageWraper{
@@ -430,12 +442,20 @@ body {
   border-radius: calc(.7rem - 1px);
   word-wrap: break-word;
   max-width: 52vh;
+  margin-left: 1vw;
 }
 
 .LeftMessage{
   color:#225aca;
   text-align: center;
   padding:0.8vw;
+}
+
+.LeftMessage_timeStamp{
+  color:#282c34;
+  text-align: right;
+  padding:0.3vw;
+  font-size: 1.5vh;
 }
 
 .audio-wrap{

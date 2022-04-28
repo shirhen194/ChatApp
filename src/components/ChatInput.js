@@ -13,7 +13,7 @@ function ChatInput(props) {
   //   setInput(()=>"")
   // }
 
-  let { modals } = props;
+  let { modals, scrollToBottom } = props;
   return (
     <div className='message-input'>
       <>
@@ -22,9 +22,10 @@ function ChatInput(props) {
             className="me-auto"
             placeholder="Type your message here..."
             onKeyPress={(e) => {
-              if (e.key === 'Enter' && message.current.value !== '') {
+              if (e.key === 'Enter' ) {
                 props.addMessage(message.current.value, props.conversation_id, 'text')
                 message.current.value = ""
+                scrollToBottom()
               }
             }}
           />
@@ -32,6 +33,7 @@ function ChatInput(props) {
             onClick={() => {
               props.addMessage(message.current.value, props.conversation_id, 'text')
               message.current.value = ""
+              scrollToBottom()
             }}
           >Send</Button>
           <div className="vr" />
