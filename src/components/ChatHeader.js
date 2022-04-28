@@ -14,6 +14,7 @@ function ChatHeader(props){
     //const friend_display_name = props.users.findIndex(p => p.userName == friend_name).displayName;
     return(
         <div>
+            <img className='chat-header-img' src={props.users[index].pic} alt=""/>
             {friend_display_name}
         </div>
     );
