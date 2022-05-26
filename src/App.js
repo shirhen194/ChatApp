@@ -104,10 +104,10 @@ class App extends React.Component {
     this.addMessage = this.addMessage.bind(this)
   }
 
-  componentDidMount = () => {
-    this.setState({
-      online: this.state.users[0]
-    })
+  componentDidMount = async () => {
+    let forcast = await fetch("https://localhost:5095/WeatherForecast")
+    let data = await forcast.json()
+    console.log(data);
   }
 
 
